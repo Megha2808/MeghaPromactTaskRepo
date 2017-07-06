@@ -1,0 +1,5 @@
+C:\Users\megha\Desktop\blog\BloggingApplication.core\BloggingApplication.Repository\bin\Debug\BloggingApplication.Repository.dll
+C:\Users\megha\Desktop\blog\BloggingApplication.core\BloggingApplication.Repository\bin\Debug\BloggingApplication.Repository.pdb
+C:\Users\megha\Desktop\blog\BloggingApplication.core\BloggingApplication.Repository\obj\Debug\BloggingApplication.Repository.csprojResolveAssemblyReference.cache
+C:\Users\megha\Desktop\blog\BloggingApplication.core\BloggingApplication.Repository\obj\Debug\BloggingApplication.Repository.dll
+C:\Users\megha\Desktop\blog\BloggingApplication.core\BloggingApplication.Repository\obj\Debug\BloggingApplication.Repository.pdb
