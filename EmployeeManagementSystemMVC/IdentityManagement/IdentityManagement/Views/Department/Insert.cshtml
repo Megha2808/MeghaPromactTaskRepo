@@ -1,0 +1,58 @@
+﻿@model IdentityManagement.Models.DepartmentVM
+@{
+    ViewBag.Title = "Insert";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<h2>Insert</h2>
+
+<form id="MyForm" method="post">
+    <div class="form-horizontal">
+        <h4>Department Details</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DepartmentName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="insertbtn" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#insertbtn").click(function (evnt) {
+
+            var $form = $("#MyForm");
+            if ($form.valid()) {
+
+                var myformdata = $("#MyForm").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Insert", "Department")",
+                    data: myformdata,
+                    success: function () {
+                        window.location.href = '/Department/Index';
+                    }
+                })
+                evnt.preventDefault();
+            }
+        })
+    })
+</script>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

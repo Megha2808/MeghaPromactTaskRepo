@@ -1,0 +1,83 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form id="MyForm">
+@{
+    var admin = false;
+
+
+    if (TempData["Message"] != null)
+    {
+
+        IEnumerable<string> roles = TempData["Message"] as IEnumerable<string>;
+        foreach (var role in roles)
+        {
+            if (role == "Admin")
+            {
+                admin = true;
+            }
+        }
+    }
+    if (admin == true)
+    {
+    <a href="/Department/Insert" class="btn btn-default btn-primary" style="float:right">Add Department</a><br /><br />
+        }
+    }
+    @*<a href="/Department/List" class="btn btn-default btn-primary">List of Department</a><br />*@
+    @*@Html.ActionLink("Insert", "Insert", "Department")*@
+    <table class="table table-responsive">
+        <tr>
+            <th>Department Id</th>
+            <th>Department Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody>
+
+            @if (ViewBag.DepartmentList != null)
+            {
+                foreach (var item in ViewBag.DepartmentList)
+                {
+                    <tr id="row_@item.DepartmentId">
+                        <td>@item.DepartmentId</td>
+                        <td>@item.DepartmentName</td>
+@{
+    var adminn = false;
+
+
+    if (TempData["Message"] != null)
+    {
+
+        IEnumerable<string> roles = TempData["Message"] as IEnumerable<string>;
+        foreach (var role in roles)
+        {
+            if (role == "Admin")
+            {
+                adminn = true;
+            }            
+        }
+    }
+    if (adminn == true)
+    {
+                        <td><a href="/Department/DeleteDepartment?DepartmentId=@item.DepartmentId" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> </a> </td>
+                        <td><a href="/Department/EditDepartment?DepartmentId=@item.DepartmentId" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> </a> </td>
+
+    }
+    else
+    {
+        <td></td>
+    }
+    }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <input type="hidden" id="hiddenDepartmentId" />
+</form>
+

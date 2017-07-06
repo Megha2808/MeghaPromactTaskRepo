@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "UserDashBoard";
+}
+
+<h2>UserDashBoard</h2>
+
+@if (TempData["Message"] != null)
+{
+    IEnumerable<string> roles = TempData["Message"] as IEnumerable<string>;
+    foreach (var role in roles)
+    {
+        <ul>
+        <li>
+            @role
+        </li>
+            </ul>
+
+    }
+}
+
+@*<div class="text-danger">@TempData["Message"]</div>*@

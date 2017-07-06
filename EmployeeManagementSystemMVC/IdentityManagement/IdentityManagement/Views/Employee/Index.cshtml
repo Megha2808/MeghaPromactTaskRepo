@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form id="MyForm">
+    <table class="table table-responsive">
+        <tr>
+            <th>User Name</th>
+            <th>EmailId</th>
+            <th>Department name</th>
+            <th></th>
+           <th></th>
+        </tr>
+        <tbody>
+
+    @if (ViewBag.EmployeeList != null)
+            {
+                foreach (var item in ViewBag.EmployeeList)
+                {
+            <tr id="row_@item.Id">
+                <td>@item.RegisterUsername</td>
+                <td>@item.RegisterEmail</td>
+                <td>
+                    @item.DepartmentName
+                </td>
+                @{
+                    var admin = false;
+                    var employee = false;
+
+                    if (TempData["Message"] != null)
+                    {
+
+                        IEnumerable<string> roles = TempData["Message"] as IEnumerable<string>;
+                        foreach (var role in roles)
+                        {
+                            if (role == "Admin")
+                            {
+                                admin = true;
+                            }
+                            else if (role == "Employee")
+                            {
+                                employee = true;
+                            }
+                        }
+                    }
+                    if(admin==true)
+                    { 
+                        <td><a href="/Employee/DeleteEmployee?EmployeeId=@item.Id" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> </a> </td>
+                        <td><a href="/Employee/EditEmployee?EmployeeId=@item.Id" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> </a> </td>
+                    }
+                    else
+                    {
+                        var id = TempData["EmployeeId"].ToString();
+                        var itemid = item.Id;
+                        if (itemid != id)
+                        {
+                            <td></td>
+                        }
+                        else
+                        {
+                            <td><a href="/Employee/EditEmployee?EmployeeId=@item.Id" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> </a> </td>
+                        }
+                        
+                        <td></td>
+                    }
+                }
+            </tr>
+
+                        }
+                    }
+
+        </tbody>
+    </table>
+                
+            
+    <input type="hidden" id="hiddenEmployeeId" />
+</form>
