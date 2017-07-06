@@ -1,0 +1,81 @@
+﻿<!--<script src="../Scripts/angular.js"></script>
+<script src="../Scripts/angular-route.js"></script>
+<script src="../service.js"></script>
+<script src="../demo.js"></script>-->
+<!--<div class="row jumbotron">
+    <h2>
+        {{emmm}}
+
+        {{message}}
+    </h2>
+    <h2>
+        {{status}}
+    </h2>
+
+
+
+</div>-->
+
+
+<h1 class="text-center text-danger">Department</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8 col-md-offset-1" ng-hide="DepartmentDetail.Id != '' ">
+        <input type="text" placeholder="Type to filter" class="input-lg form-control" ng-model="txtFilter" />
+        <br />
+        <br />
+        <a class="btn btn-default btn-primary btn-group-lg" style="float:right" href="#!/AddDepartment/"><span>Add Department</span></a>
+        <br />
+        <br />
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                </tr>
+            </thead>
+            <tr ng-repeat="d in dep | filter:txtFilter">
+                <td>{{d.Id}}</td>
+                <td>
+                    {{d.Name}}
+                </td>
+                <td><a class="btn btn-primary btn-xs" ng-click="GetDepartmentById(dep[$index])"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" ng-click="DeleteDepartment(d.Id)"> <span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+
+    
+        </table>
+    </div>
+
+    <div class="row" ng-show="DepartmentDetail.Id != '' ">
+        <h1>Edit Department</h1>
+        <div class="col-md-6 col-md-offset-3">
+            <form>
+                <div hidden="hidden">
+                    <input id="name" type="text" ng-model="DepartmentDetail.Id" class="form-control" placeholder="Employeename" />
+                </div>
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input id="name" type="text" ng-model="DepartmentDetail.Name" class="form-control" placeholder="Department name" />
+                </div>
+
+                <button ng-click="Update()" class="btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
