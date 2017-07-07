@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\CategoryRepository.cs" />
+    <Compile Include="Category\ICategoryRepository.cs" />
+    <Compile Include="Post\IPostRepository.cs" />
+    <Compile Include="Post\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Category\" />
-    <Folder Include="Post\" />
     <Folder Include="Services\" />
     <Folder Include="Tag\" />
   </ItemGroup>
