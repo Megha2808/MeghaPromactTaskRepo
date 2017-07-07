@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BloggingApplication.core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace BloggingApplication.DomainModel.Models
 
         public virtual DateTime? Modified
         { get; set; }
+
+        public virtual ApplicationUser Users { get; set; }
 
         public virtual Category Category
         { get; set; }

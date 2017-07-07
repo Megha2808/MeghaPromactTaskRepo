@@ -54,6 +54,10 @@ namespace BloggingApplication.core.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
@@ -81,6 +85,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             ManageMessageId? message;
             var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
@@ -112,6 +120,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -136,6 +148,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
@@ -151,6 +167,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
@@ -164,6 +184,10 @@ namespace BloggingApplication.core.Controllers
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
             // Send an SMS through the SMS provider to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
@@ -175,6 +199,11 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
         {
+
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -200,6 +229,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
             if (!result.Succeeded)
             {
@@ -217,6 +250,10 @@ namespace BloggingApplication.core.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             return View();
         }
 
@@ -226,6 +263,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -248,6 +289,10 @@ namespace BloggingApplication.core.Controllers
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             return View();
         }
 
@@ -257,6 +302,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             if (ModelState.IsValid)
             {
                 var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
@@ -280,6 +329,10 @@ namespace BloggingApplication.core.Controllers
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             ViewBag.StatusMessage =
                 message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -305,6 +358,10 @@ namespace BloggingApplication.core.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             // Request a redirect to the external login provider to link a login for the current user
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
@@ -313,6 +370,10 @@ namespace BloggingApplication.core.Controllers
         // GET: /Manage/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
             if (loginInfo == null)
             {

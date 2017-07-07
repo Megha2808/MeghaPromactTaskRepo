@@ -10,6 +10,11 @@ namespace BloggingApplication.core.Controllers
     {
         public ActionResult Index()
         {
+
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             return View();
         }
 

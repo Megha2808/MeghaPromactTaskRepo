@@ -1,4 +1,5 @@
 ﻿using BloggingApplication.core.Models;
+using BloggingApplication.DomainModel.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;

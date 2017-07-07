@@ -6,10 +6,50 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
+            @{
+                IEnumerable<string> roles = TempData["roleName"] as IEnumerable<string>;
+                var isAdmin = false;
+                var isUser = true;
+                if (roles != null)
+                {
+                    foreach (var role in roles)
+                    {
+                        if (role == "Admin")
+                        {
+                            isAdmin = true;
+                        }
+                        else if(role == "User")
+                        {
+                            isUser = true;
+                        }
+                    }
+                }
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
+                if(isUser==true && isAdmin==false)
+                {
+                    <li>
+                        <a href="#"> add tag</a>
+                    </li>
+                }
             <li>
+                 @*Split button 
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-user"></i>Action</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log Out <i class="glyphicon glyphicon-log-out"></i> </a>
+                        </li>
+                    </ul>
+                </div>*@
                 <!-- Split button -->
                 <div class="btn-group" style="margin-top:10px;">
                     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-user"></i></button>
@@ -18,23 +58,15 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu">
-                        @{
-                            IEnumerable<string> roles = TempData["roleName"] as IEnumerable<string>;
-                            if (roles != null)
-                            {
-                                foreach (var role in roles)
-                                {
-                                    if (role == "Admin")
-                                    {
-                                        <li><a href="#">Admin</a></li>
-                                    }
-                                }
-                            }
-                        }
+                        @if (isAdmin == true)
+                        {
+                            <li><a href="AdminHome/Index"> Admin</a></li>
+                        }                                               
                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out <i class="glyphicon glyphicon-log-out"></i> </a></li>
                     </ul>
                 </div>
             </li>
+            }
         </ul>
                                 }
                             }

@@ -1,4 +1,6 @@
-﻿namespace BloggingApplication.DomainModel.Models
+﻿using System.Collections.Generic;
+
+namespace BloggingApplication.DomainModel.Models
 {
     public class Tag
     {
@@ -7,5 +9,7 @@
 
         public virtual string Name
         { get; set; }
+
+        public virtual IList<Post> Posts { get; set; }
     }
 }

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/angular.js"></script> 
+    <script src="../../Scripts/bootstrap.js"></script>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <div id="container">
+        <form id="logoutForm" method="post" action="../../Account/LogOff"></form>
+        <nav role="navigation" class="navbar navbar-inverse">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/home/index">blog</a></li>
+                </ul>
+            </div>
+            <div style="float:right">
+                <div class="btn-group" style="margin-top:10px;">
+                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-user"></i></button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">                       
+                        <li><a href="#"> Admin</a></li>                       
+                        <li><a onclick="">Log Out <i class="glyphicon glyphicon-log-out"></i> </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <a href="javascript:document.getElementById('logoutForm').submit()">Log Out <i class="glyphicon glyphicon-log-out"></i> </a>
+        <div id="content">Content here</div>
+        <div id="navbar">Navigation</div>
+    </div>
+</body>
+</html>

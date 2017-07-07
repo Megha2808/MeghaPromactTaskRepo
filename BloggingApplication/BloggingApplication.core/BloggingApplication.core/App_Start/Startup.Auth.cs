@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using BloggingApplication.core.Models;
 using BloggingApplication.DomainModel.Models;
+using BloggingApplication.DomainModel.Context;
 
 namespace BloggingApplication.core
 {
