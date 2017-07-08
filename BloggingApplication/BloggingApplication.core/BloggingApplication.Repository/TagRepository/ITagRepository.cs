@@ -2,6 +2,7 @@
 using BloggingApplication.DomainModel.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BloggingApplication.Repository.TagRepository
 {
@@ -17,7 +18,7 @@ namespace BloggingApplication.Repository.TagRepository
         void DeleteTag(int Id);
 
         //Get all tags
-        IEnumerable<Tag> GetAllTags();
+        IQueryable GetAllTags();
 
         //find by id
         Tag FindById(int Id);

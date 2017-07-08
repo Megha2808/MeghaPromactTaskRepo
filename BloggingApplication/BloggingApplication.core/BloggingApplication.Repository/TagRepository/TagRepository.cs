@@ -44,7 +44,7 @@ namespace BloggingApplication.Repository.TagRepository
         public void EditTag(Tag T)
         {
             db.Entry(T).State = System.Data.Entity.EntityState.Modified;
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
         #endregion Edit tag
 
@@ -57,9 +57,9 @@ namespace BloggingApplication.Repository.TagRepository
         #endregion
 
         #region Get All tags
-        public IEnumerable<Tag> GetAllTags()
+        public IQueryable GetAllTags()
         {
-            return db.Tags;
+            return db.Tags.Select(x => new { Id = x.Id, Name = x.Name });
         }
         #endregion
     }

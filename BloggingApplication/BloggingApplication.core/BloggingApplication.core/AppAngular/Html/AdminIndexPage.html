@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="MyApp">
 <head>
     <title></title>
 	<meta charset="utf-8" />
@@ -7,34 +7,31 @@
     <script src="../../Scripts/angular.js"></script> 
     <script src="../../Scripts/bootstrap.js"></script>
     <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/angular-route.js"></script>
+    <script src="../AngularScripts/ControllerScript/route.js"></script>
+    <script src="../AngularScripts/ControllerScript/DisplayCategoryController.js"></script>
 </head>
 <body>
-    
-    <div id="container">
-        <form id="logoutForm" method="post" action="../../Account/LogOff"></form>
-        <nav role="navigation" class="navbar navbar-inverse">
-            <div>
-                <ul class="nav navbar-nav">
-                    <li><a href="/home/index">blog</a></li>
-                </ul>
-            </div>
-            <div style="float:right">
-                <div class="btn-group" style="margin-top:10px;">
-                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-user"></i></button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">                       
-                        <li><a href="#"> Admin</a></li>                       
-                        <li><a onclick="">Log Out <i class="glyphicon glyphicon-log-out"></i> </a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <a href="javascript:document.getElementById('logoutForm').submit()">Log Out <i class="glyphicon glyphicon-log-out"></i> </a>
-        <div id="content">Content here</div>
-        <div id="navbar">Navigation</div>
+    <div>
+        <div id="navbar" class="col-sm-3" style="border-right:solid;margin-top:20px; float:left;height:700px; ">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li ><a class="btn btn-info" href="#!/category">Manage Categories</a></li>
+                <li><a class="btn btn-info"  href="#!/tag">Manage Tags</a></li>
+                <li><a class="btn btn-info" href="#!/Posts">Manage Posts</a></li>
+            </ul>
+        </div>
+        <!--<nav role="navigation" class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+                <li><a href="#!/Employee">Employee</a></li>
+                <li><a href="#!/Department">Department</a></li>
+            </ul>
+        </nav>-->
+
+        <div id="Content" style="margin-top:20px; float:right; padding:inherit" ng-view>
+ 
+        </div>
+
     </div>
 </body>
 </html>

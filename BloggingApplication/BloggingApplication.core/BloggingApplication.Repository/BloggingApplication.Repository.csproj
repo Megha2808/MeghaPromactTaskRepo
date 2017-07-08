@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryRepository\CategoryRepository.cs" />
+    <Compile Include="CategoryRepository\ICategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IUserRoleService.cs" />
     <Compile Include="Services\UserRoleService.cs" />
@@ -64,7 +66,6 @@
     <Compile Include="TagRepository\TagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CategoryRepository\" />
     <Folder Include="PostRepository\" />
   </ItemGroup>
   <ItemGroup>

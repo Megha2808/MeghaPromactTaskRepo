@@ -56,3 +56,9 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.Test.csprojResolveAssemblyReference.cache
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.UnitTest.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.UnitTest.pdb
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Web.Http.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Net.Http.Formatting.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Newtonsoft.Json.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Web.Http.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Net.Http.Formatting.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Newtonsoft.Json.xml
