@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,6 +220,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WebApiControllers\CategoriesController.cs" />
+    <Compile Include="WebApiControllers\PostsController.cs" />
     <Compile Include="WebApiControllers\TagsController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -226,8 +229,10 @@
     <Content Include="AppAngular\AngularScripts\ControllerScript\DisplayPostController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\DisplayTagController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\route.js" />
-    <Content Include="AppAngular\AngularScripts\ServicesScript\TagService.js" />
+    <Content Include="AppAngular\AngularScripts\ServicesScript\Service.js" />
     <Content Include="AppAngular\Css\AdminIndexpage.css" />
+    <Content Include="AppAngular\Html\AddCategory.html" />
+    <Content Include="AppAngular\Html\AddPost.html" />
     <Content Include="AppAngular\Html\AddTag.html" />
     <Content Include="App_Data\BlogDb.mdf" />
     <Content Include="App_Data\BlogDb_log.ldf">
@@ -1063,6 +1068,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Roles\" />

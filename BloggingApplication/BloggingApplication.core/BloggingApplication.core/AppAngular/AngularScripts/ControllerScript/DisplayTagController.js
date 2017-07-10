@@ -1,20 +1,19 @@
-﻿MyApp.controller("DisplayTagController", function ($scope, TagApi) {
+﻿MyApp.controller("DisplayTagController", function ($scope, Api) {
     //$scope.message = "In category";
-    //alert("In Tag.....");
+    alert("In Tag.....");
 
-   /****************************************************
-                        Get Tags
-    ****************************************************/   
+    /****************************************************
+                         Get Tags
+     ****************************************************/
     GetTags();
     function GetTags() {
         alert("Get tags.......");
-        TagApi.GetTags()
+        Api.GetTags()
         .then(function (response) {
             $scope.tag = response.data;
             alert($scope.tag);
         },
-        function ()
-        {
+        function () {
             alert("Fail..");
         });
     }
@@ -35,7 +34,7 @@
     };
 
     /****************************************************
-                         Update  Department...........
+                         Update  Tag...........
     ****************************************************/
 
     $scope.Update = function () {
@@ -46,7 +45,7 @@
                 'Id': $scope.TagDetail.Id
             };
         //Call service.js method
-        TagApi.UpdateTag(tagToUpdate)
+        Api.UpdateTag(tagToUpdate)
             .then(function (response) {
                 alert("Tag Updated");
                 window.location.href = '/AdminHome/Index#!/tag';
@@ -58,11 +57,11 @@
             );
     };
 
-    /******************************************
-                  @  Delete TAgs
+/******************************************
+   Tags to delete
 ***********************************************/
     $scope.DeleteTag = function (Id) {
-        TagApi.DeleteTag(Id).
+        Api.DeleteTag(Id).
             then(function () {
                 window.location.href = '/AdminHome/Index#!/tag';
                 alert("Deleted Successfully.");
@@ -73,11 +72,9 @@
             });
     };
 
-
-   
 });
 
-MyApp.controller("AddTagController", function ($scope, TagApi) {
+MyApp.controller("AddTagController", function ($scope, Api) {
     $scope.AddNewTag = function () {
         alert("in add tag con");
         if ($scope.Name !== '') {
@@ -89,11 +86,11 @@ MyApp.controller("AddTagController", function ($scope, TagApi) {
             alert($scope.Name);
 
             //Call service.js method
-            TagApi.AddTag(tagToAdd)
+            Api.AddTag(tagToAdd)
                 .then(function (response) {
                     alert("Tag added");
                     window.location.href = '/AdminHome/Index#!/tag';
-                    $scope.Name = undefined;                 
+                    $scope.Name = undefined;
                 }, function () {
                     alert("Error in adding");
                 }

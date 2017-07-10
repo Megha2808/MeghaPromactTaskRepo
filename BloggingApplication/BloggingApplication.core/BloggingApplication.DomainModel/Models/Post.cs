@@ -1,6 +1,7 @@
 ﻿using BloggingApplication.core.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +25,14 @@ namespace BloggingApplication.DomainModel.Models
         public virtual DateTime? Modified
         { get; set; }
 
+        public virtual string Users_Id { get; set; }
+
+        public virtual int Category_Id { get; set; }
+
+        [ForeignKey("Users_Id")]
         public virtual ApplicationUser Users { get; set; }
 
+        [ForeignKey("Category_Id")]
         public virtual Category Category
         { get; set; }
 

@@ -27,6 +27,7 @@ namespace BloggingApplication.Repository.CategoryRepository
         public void EditCategory(Category C)
         {
             db.Entry(C).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
         }
 
         public Category FindById(int Id)

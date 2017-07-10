@@ -4,19 +4,6 @@
 }
 
 <title></title>
-@*<body>
-    <meta charset="utf-8" />
-    <script src="../../Scripts/jquery-1.10.2.js"></script>
-    <script src="../../Scripts/angular.js"></script>
-    <script src="../../Scripts/bootstrap.js"></script>
-    <link href="../../Content/bootstrap.css" rel="stylesheet" />
-    <script src="../../Scripts/angular-route.js"></script>
-    <script src="../../AngularScripts/ControllerScript/route.js"></script>
-    <script src="../../AngularScripts/ControllerScript/DisplayCategoryController.js"></script>
-
-    @Html.Raw(File.ReadAllText(Server.MapPath("~/AppAngular/Html/AdminIndexPage.html")))
-
-</body>*@
 
 <html ng-app="MyApp">
 <head>
@@ -31,7 +18,7 @@
     <script src="~/AppAngular/AngularScripts/ControllerScript/DisplayCategoryController.js"></script>
     <script src="~/AppAngular/AngularScripts/ControllerScript/DisplayTagController.js"></script>
     <script src="~/AppAngular/AngularScripts/ControllerScript/DisplayPostController.js"></script>
-    <script src="~/AppAngular/AngularScripts/ServicesScript/TagService.js"></script>
+    <script src="~/AppAngular/AngularScripts/ServicesScript/Service.js"></script>
 </head>
 <body>
     <div>
@@ -41,18 +28,10 @@
                 <li><a class="btn btn-info" href="#!/tag">Manage Tags</a></li>
                 <li><a class="btn btn-info" href="#!/post">Manage Posts</a></li>
             </ul>
-        </div>
-        <!--<nav role="navigation" class="navbar navbar-inverse">
-            <ul class="nav navbar-nav">
-                <li><a href="#!/Employee">Employee</a></li>
-                <li><a href="#!/Department">Department</a></li>
-            </ul>
-        </nav>-->
-
+        </div>       
         <div id="Content" class="col-md-8" style="float:right;margin-top:20px" ng-view>
 
         </div>
-
     </div>
 </body>
 </html>

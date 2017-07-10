@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace BloggingApplication.DomainModel.ViewModels
 {
-    public class TagViewModel
+    public class TagPostModel
     {
-        public virtual int Id
-        { get; set; }
-
-        public virtual string Name
-        { get; set; }
+        
     }
 }

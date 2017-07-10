@@ -53,10 +53,7 @@ namespace BloggingApplication.core.WebApiControllers
             {
                 return BadRequest(ModelState);
             }
-
-           
-
-
+                      
            // db.Entry(tag).State = EntityState.Modified;
 
             try
@@ -105,7 +102,6 @@ namespace BloggingApplication.core.WebApiControllers
             _tagRepository.DeleteTag(id);
             //db.Tags.Remove(tag);
             //db.SaveChanges();
-
             return Ok(tag);
         }
 
