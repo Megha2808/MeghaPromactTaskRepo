@@ -228,6 +228,7 @@
     <Content Include="AppAngular\AngularScripts\ControllerScript\DisplayCategoryController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\DisplayPostController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\DisplayTagController.js" />
+    <Content Include="AppAngular\AngularScripts\ControllerScript\IndexController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\route.js" />
     <Content Include="AppAngular\AngularScripts\ServicesScript\Service.js" />
     <Content Include="AppAngular\Css\AdminIndexpage.css" />
@@ -1031,6 +1032,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PaginationJs.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />

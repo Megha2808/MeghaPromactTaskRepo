@@ -11,5 +11,10 @@ namespace BloggingApplication.Repository.PostRepository
     {
         void AddPost(Post p , string userId);
         IQueryable GetAllPost();
+        void EditPost(Post model,string userid);
+        Post GetById(int id);
+        void DeletePost(int id);
+        IQueryable GetPostByCategoryId(int categoryid);
+        IQueryable GetPostByTagId(int tagid);
     }
 }

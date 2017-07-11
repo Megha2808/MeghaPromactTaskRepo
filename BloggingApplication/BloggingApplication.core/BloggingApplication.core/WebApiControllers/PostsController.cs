@@ -30,21 +30,27 @@ namespace BloggingApplication.core.WebApiControllers
 
         // GET: api/Posts/5
         [ResponseType(typeof(Post))]
-        public IHttpActionResult GetPost(int id)
+        [Route("api/Posts/categoryId/{id}")]
+        public IHttpActionResult GetPostByCategoryId(int id)
         {
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return NotFound();
-            }
+            var data = _postRepository.GetPostByCategoryId(id);
+            return Ok(data);
+        }
 
-            return Ok(post);
+        [ResponseType(typeof(Post))]
+        [Route("api/Posts/tagId/{id}")]
+        public IHttpActionResult GetPostByTagId(int id)
+        {
+            var data = _postRepository.GetPostByTagId(id);
+            return Ok(data);
         }
 
         // PUT: api/Posts/5
         [ResponseType(typeof(void))]
+        [Route("api/editpost/{id}")]
         public IHttpActionResult PutPost(int id, Post post)
         {
+            var userId = User.Identity.GetUserId();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -55,11 +61,11 @@ namespace BloggingApplication.core.WebApiControllers
                 return BadRequest();
             }
 
-            db.Entry(post).State = EntityState.Modified;
 
+            _postRepository.EditPost(post,userId);
             try
             {
-                db.SaveChanges();
+                
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -101,16 +107,18 @@ namespace BloggingApplication.core.WebApiControllers
 
         // DELETE: api/Posts/5
         [ResponseType(typeof(Post))]
+        [Route("api/Deletepost/{id}")]
         public IHttpActionResult DeletePost(int id)
         {
-            Post post = db.Posts.Find(id);
+            Post post = _postRepository.GetById(id);
+
             if (post == null)
             {
                 return NotFound();
             }
-
-            db.Posts.Remove(post);
-            db.SaveChanges();
+            _postRepository.DeletePost(id);
+            //db.Posts.Remove(post);
+            //db.SaveChanges();
 
             return Ok(post);
         }

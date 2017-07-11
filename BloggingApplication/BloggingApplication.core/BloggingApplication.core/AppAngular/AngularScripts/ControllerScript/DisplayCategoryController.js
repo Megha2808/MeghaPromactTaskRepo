@@ -1,18 +1,18 @@
 ﻿MyApp.controller("DisplayCategoryController", function ($scope, Api) {
 
     //$scope.message = "In category";
-    alert("In cat.....");
+   // alert("In cat.....");
 
     /****************************************************
                          Get Tags
      ****************************************************/
     GetCategories();
     function GetCategories() {
-        alert("Get cats.......");
+       // alert("Get cats.......");
         Api.GetCategories()
         .then(function (response) {
             $scope.category = response.data;
-            alert($scope.category);
+           // alert($scope.category);
         },
         function () {
             alert("Fail..");
@@ -35,11 +35,11 @@
     };
 
     /****************************************************
-                         Update  Department...........
+                         Update  Tag...........
     ****************************************************/
 
     $scope.Update = function () {
-        alert("In update");
+        //alert("In update");
         var categoryToUpdate =
             {
                 'Name': $scope.CategoryDetail.Name,
@@ -79,9 +79,9 @@
 
 MyApp.controller("AddCategoryController", function ($scope, Api) {
     $scope.AddCategory = function () {
-        alert("in add cat con");
+       // alert("in add cat con");
         if ($scope.Name !== '') {
-            alert("in if condition");
+           // alert("in if condition");
             var tagToAdd =
                 {
                     'Name': $scope.Name

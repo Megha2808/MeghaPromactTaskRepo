@@ -1,7 +1,7 @@
 ﻿MyApp.controller("DisplayPostController", function ($scope,Api) {   
     GetPosts();
     function GetPosts() {
-       // alert("In get post...method.. ");
+       //alert("In get post...method.. ");
         Api.GetPosts()
         .then(function (response) {
             $scope.post = response.data;
@@ -11,7 +11,7 @@
         });
     }
 
-    /****************************************************
+/****************************************************
                  Edit  Post
 ****************************************************/
 
@@ -38,17 +38,7 @@
            alert("Fail..");
        });
     }
-
-    //angular.forEach(Taglist, function (categoryvalue, categorykey) {
-
-    //    $scope.Taglist.push({
-    //        label: categoryvalue.Name,
-    //        value: categoryvalue.Id,
-    //    });
-    //})
-    //var currentDetailIndex = $scope.Taglist.map(function (e) { return e.value; }).indexOf(currentCatValue);
-    //$scope.selectedCategory = $scope.Taglist[currentDetailIndex];
-
+    
     $scope.PostDetail = {       
         Id: '',
         Title: '',
@@ -59,7 +49,7 @@
 
     $scope.GetPostById = function (data) {
 
-        $scope.TagDetail =
+        $scope.PostDetail =
             {               
                 Id: data.Id,
                 Title: data.Title,
@@ -70,23 +60,26 @@
     };
 
     /****************************************************
-                         Update  Tag...........
+                         Update Post
     ****************************************************/
 
-    $scope.Update = function () {
-        alert("In update");
-        var tagToUpdate =
+    $scope.UpdatePost = function () {
+       alert("In update");
+        var postToUpdate =
             {
-                'Name': $scope.TagDetail.Name,
-                'Id': $scope.TagDetail.Id
+                'Id':$scope.PostDetail.Id,
+                'Title': $scope.PostDetail.Title,
+                'Content': $scope.PostDetail.Content,
+                'Category_Id': $scope.PostDetail.Category_Id,
+                'Tags': $scope.PostDetail.Tags
             };
         //Call service.js method
-        Api.UpdateTag(tagToUpdate)
+        Api.UpdatePost(postToUpdate)
             .then(function (response) {
-                alert("Tag Updated");
-                window.location.href = '/AdminHome/Index#!/tag';
-                $scope.TagDetail.Id = '';
-                GetTags();
+                alert("post Updated");
+                window.location.href = '/AdminHome/Index#!/post';
+                $scope.PostDetail.Id = '';
+                GetPosts();
             }, function () {
                 alert("Error in adding");
             }
@@ -94,17 +87,17 @@
     };
 
 /******************************************
-       Tags to delete
+       Post to delete
 ***********************************************/
-    $scope.DeleteTag = function (Id) {
-        Api.DeleteTag(Id).
+    $scope.DeletePost = function (Id) {
+        Api.DeletePost(Id).
             then(function () {
-                window.location.href = '/AdminHome/Index#!/tag';
+                window.location.href = '/AdminHome/Index#!/post';
                 alert("Deleted Successfully.");
-                GetTags();
+                GetPosts();
             }, function () {
-                alert("This department has not employee assigned");
-                GetTags();
+                alert("Not Deleted Successfully");
+                GetPosts();
             });
     };
 
@@ -134,11 +127,11 @@ MyApp.controller("AddPostController", function ($scope, Api) {
            alert("Fail..");
        });
     }
-    alert("in add post con");
+   // alert("in add post con");
     $scope.AddNewPost = function () {
                
         if ($scope.Title !== null) {
-            alert("in if condition");
+           // alert("in if condition");
             var postToAdd =
                 {
                     'Title': $scope.Title,
@@ -155,8 +148,7 @@ MyApp.controller("AddPostController", function ($scope, Api) {
                     $scope.Name = undefined;
                 }, function () {
                     alert("Error in adding");
-                }
-                );
+                });
         }
         else {
             alert("Please enter all the fields");

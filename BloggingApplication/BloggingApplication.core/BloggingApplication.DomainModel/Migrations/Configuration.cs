@@ -9,7 +9,7 @@ namespace BloggingApplication.DomainModel.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "BloggingApplication.DomainModel.Models.ApplicationDbContext";
         }
 

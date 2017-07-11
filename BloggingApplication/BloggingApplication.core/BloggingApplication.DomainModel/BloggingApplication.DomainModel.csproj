@@ -154,6 +154,10 @@
     <Compile Include="Migrations\201707101128394_many to many.Designer.cs">
       <DependentUpon>201707101128394_many to many.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707110335026_data.cs" />
+    <Compile Include="Migrations\201707110335026_data.Designer.cs">
+      <DependentUpon>201707110335026_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Category.cs" />
@@ -186,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707101128394_many to many.resx">
       <DependentUpon>201707101128394_many to many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707110335026_data.resx">
+      <DependentUpon>201707110335026_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

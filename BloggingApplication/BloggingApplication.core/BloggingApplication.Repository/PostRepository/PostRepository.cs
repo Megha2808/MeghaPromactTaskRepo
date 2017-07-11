@@ -16,7 +16,8 @@ namespace BloggingApplication.Repository.PostRepository
         #region Get Posts
         public IQueryable GetAllPost()
         {
-            var data = db.Posts.Select(x => new
+            
+            var data = db.Posts.Where(x=>x.Isdelete==false).Select(x => new
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -30,7 +31,7 @@ namespace BloggingApplication.Repository.PostRepository
                 Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
                 createdOn = x.PostedOn,
                 Content = x.Content,
-            }).OrderBy(x => x.createdOn);
+            }).OrderByDescending(x => x.createdOn);
             return data;
         }
         #endregion Get Post
@@ -46,6 +47,7 @@ namespace BloggingApplication.Repository.PostRepository
             post.Modified = DateTime.Now;
             post.PostedOn = DateTime.Now;
             post.Users_Id = userId;
+            post.Isdelete = false;
 
             //To avoid adding New tags in database...
             foreach (var assignedtag in p.Tags)
@@ -61,10 +63,115 @@ namespace BloggingApplication.Repository.PostRepository
         #endregion Add Post
 
         #region update Post
+        public void EditPost(Post model, string userid)
+        {
+            Post p = db.Posts.Include(x=>x.Tags).SingleOrDefault(x => x.Id == model.Id);
+            p.Isdelete = false;
+            p.Category_Id = model.Category_Id;
+            p.Modified= DateTime.Now.Date;
 
+            //p.Tags.Where(m=> ! model.Tags.Contains(p.Tags.Id))
+            //// Remove deselected skills
+            //teacher.skills.Where(m => !model.skillIds.Contains(m.Id))
+            //    .ToList().ForEach(skill => teacher.skills.Remove(skill));
 
+            //// Add new skills
+            //var existingSkillIds = teacher.skills.Select(m => m.Id);
+            //db.Skills.Where(m => model.skillIds.Exclude(existingSkillIds).Contains(m.Id))
+            //    .ToList().ForEach(skill => teacher.skills.Add(skill));
 
+            //var earliertags = p.Tags;
+            ////To avoid adding New tags in database...
+            //p.Tags = model.Tags;
+
+            
+            //    foreach (var assignedtag in p.Tags)
+            //    {
+            //    foreach(var i in earliertags)
+            //    {
+            //        if(i.Id==assignedtag.Id)
+            //        {
+
+            //        }
+            //        else
+            //        {
+            //            db.Entry(assignedtag).State = EntityState.Unchanged;
+            //        }
+            //    }
+                   
+                                         
+                       
+            //    }                              
+            
+                     
+           
+            db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+           db.SaveChanges();
+        }
         #endregion
 
+        #region DeletePost
+        public void DeletePost(int id)
+        {
+            Post p = GetById(id);
+            p.Isdelete = true;
+            db.SaveChanges();
+        }
+        #endregion DeletePost
+
+        #region GetPostById
+        public Post GetById(int id)
+        {
+            var result = db.Posts.Where(x => x.Id == id).FirstOrDefault();
+            return result;
+        }
+        #endregion Get PostById
+
+        #region GetPostByCategoryId
+        public IQueryable GetPostByCategoryId(int categoryid)
+        {
+            var data = db.Posts.Where(x => x.Category_Id == categoryid)
+                .Select(x=> new
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Category_Id = x.Category_Id,
+                    username = (from u in db.Users
+                                where u.Id == x.Users_Id
+                                select u.UserName).FirstOrDefault(),
+                    Categoryname = (from c in db.Categories
+                                    where c.Id == x.Category_Id
+                                    select c.Name).FirstOrDefault(),
+                    Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                    createdOn = x.PostedOn,
+                    Content = x.Content,
+                }).OrderByDescending(x => x.createdOn);
+            return data;
+        }
+        #endregion
+
+        #region GetPostByTagId
+        public IQueryable GetPostByTagId(int tagid)
+        {
+            var data = db.Posts.Where(x => x.Tags.Select(m=>m.Id).Contains(tagid))
+                            .Select(x => new
+                            {
+                                Id = x.Id,
+                                Title = x.Title,
+                                Category_Id = x.Category_Id,
+                                username = (from u in db.Users
+                                            where u.Id == x.Users_Id
+                                            select u.UserName).FirstOrDefault(),
+                                Categoryname = (from c in db.Categories
+                                                where c.Id == x.Category_Id
+                                                select c.Name).FirstOrDefault(),
+                                Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                                createdOn = x.PostedOn,
+                                Content = x.Content,
+                            }).OrderByDescending(x => x.createdOn);
+            return data;
+
+        }
+        #endregion
     }
 }

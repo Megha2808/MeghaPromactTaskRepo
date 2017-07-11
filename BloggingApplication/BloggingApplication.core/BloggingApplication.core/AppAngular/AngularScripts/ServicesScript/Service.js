@@ -87,6 +87,45 @@ Service.factory('Api', function ($http) {
         //alert("In service method");
         return $http.get('/api/Posts');
     };
+
+    Api.GetPostsByCategoryId = function (id) {
+        alert("CategoryId");
+        var request = $http({
+            method: 'get',
+            url: '/api/Posts/categoryId/' + id,
+            data: id
+        });
+        return request;        
+    };
+
+    Api.GetPostsByTagId = function (id) {
+        alert("InPostId");
+        var request = $http({
+            method: 'get',
+            url: '/api/Posts/tagId/' + id,
+            data: id
+        });
+        return request;
+    };
+
+    Api.UpdatePost = function (data) {
+        alert("api methos");
+        var request = $http({
+            method: 'put',
+            url: '/api/editpost/' + data.Id,
+            data: data
+        });
+        return request;
+    };
+    //Delete
+    Api.DeletePost = function (id) {
+        var request = $http({
+            method: 'Delete',
+            url: '/api/Deletepost/' + id,
+            data: id
+        });
+        return request;
+    };
     return Api;
 
 });

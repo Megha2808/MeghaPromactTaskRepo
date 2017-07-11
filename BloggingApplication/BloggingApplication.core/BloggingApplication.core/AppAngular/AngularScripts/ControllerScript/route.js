@@ -28,5 +28,5 @@ MyApp.config(['$routeProvider',
          when('/AddPost', {
              templateUrl: '/AppAngular/Html/AddPost.html',
              controller: 'AddPostController'
-         });
+         })
     }]);

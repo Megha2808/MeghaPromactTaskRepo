@@ -1,17 +1,17 @@
 ﻿MyApp.controller("DisplayTagController", function ($scope, Api) {
     //$scope.message = "In category";
-    alert("In Tag.....");
+    //("In Tag.....");
 
     /****************************************************
                          Get Tags
      ****************************************************/
     GetTags();
     function GetTags() {
-        alert("Get tags.......");
+        //alert("Get tags.......");
         Api.GetTags()
         .then(function (response) {
             $scope.tag = response.data;
-            alert($scope.tag);
+            //alert($scope.tag);
         },
         function () {
             alert("Fail..");
@@ -38,7 +38,7 @@
     ****************************************************/
 
     $scope.Update = function () {
-        alert("In update");
+       // alert("In update");
         var tagToUpdate =
             {
                 'Name': $scope.TagDetail.Name,
@@ -59,7 +59,7 @@
 
 /******************************************
    Tags to delete
-***********************************************/
+*********************************************/
     $scope.DeleteTag = function (Id) {
         Api.DeleteTag(Id).
             then(function () {
@@ -67,7 +67,7 @@
                 alert("Deleted Successfully.");
                 GetTags();
             }, function () {
-                alert("This department has not employee assigned");
+                alert("Not deleted successfully");
                 GetTags();
             });
     };
@@ -76,9 +76,9 @@
 
 MyApp.controller("AddTagController", function ($scope, Api) {
     $scope.AddNewTag = function () {
-        alert("in add tag con");
+       // alert("in add tag con");
         if ($scope.Name !== '') {
-            alert("in if condition");
+           // alert("in if condition");
             var tagToAdd =
                 {
                     'Name': $scope.Name

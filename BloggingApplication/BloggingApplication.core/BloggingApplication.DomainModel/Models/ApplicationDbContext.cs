@@ -33,27 +33,13 @@ namespace BloggingApplication.DomainModel.Models
                         .WithMany(c => c.Posts)
                         .Map(cs =>
                         {
-                            cs.MapLeftKey("Tag_Id");
-                            cs.MapRightKey("Post_Id");
+                            cs.MapLeftKey("Post_Id");
+                            cs.MapRightKey("Tag_Id");
                             cs.ToTable("TagPost");
                         });
             base.OnModelCreating(modelBuilder);
         }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Post>()
-        //        .HasMany(up => up.Course)
-        //        .WithMany(course => course.UserProfiles)
-        //        .Map(mc =>
-        //        {
-        //            mc.ToTable("T_UserProfile_Course");
-        //            mc.MapLeftKey("UserProfileID");
-        //            mc.MapRightKey("CourseID");
-        //        }
-        //    );
-
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
