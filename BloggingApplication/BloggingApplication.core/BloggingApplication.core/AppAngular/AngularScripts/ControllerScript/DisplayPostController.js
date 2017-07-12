@@ -1,7 +1,7 @@
-﻿MyApp.controller("DisplayPostController", function ($scope,Api) {   
+﻿MyApp.controller("DisplayPostController", function ($scope, Api) {
     GetPosts();
     function GetPosts() {
-       //alert("In get post...method.. ");
+        //alert("In get post...method.. ");
         Api.GetPosts()
         .then(function (response) {
             $scope.post = response.data;
@@ -11,9 +11,9 @@
         });
     }
 
-/****************************************************
-                 Edit  Post
-****************************************************/
+    /****************************************************
+                     Edit  Post
+    ****************************************************/
 
     GetCategories();
     function GetCategories() {
@@ -23,7 +23,7 @@
             $scope.CategoryList = response.data;
         },
         function () {
-            alert("Fail..");
+            alert("Fail to load category list");
         });
     }
 
@@ -35,22 +35,22 @@
            $scope.SelectedTag = [];
        },
        function () {
-           alert("Fail..");
+           alert("Fail to load tag list");
        });
     }
-    
-    $scope.PostDetail = {       
+
+    $scope.PostDetail = {
         Id: '',
         Title: '',
         Content: '',
         Category_Id: '',
-        Tags:''
+        Tags: ''
     };
 
     $scope.GetPostById = function (data) {
 
         $scope.PostDetail =
-            {               
+            {
                 Id: data.Id,
                 Title: data.Title,
                 Content: data.Content,
@@ -64,10 +64,10 @@
     ****************************************************/
 
     $scope.UpdatePost = function () {
-       alert("In update");
+        //alert("In update");
         var postToUpdate =
             {
-                'Id':$scope.PostDetail.Id,
+                'Id': $scope.PostDetail.Id,
                 'Title': $scope.PostDetail.Title,
                 'Content': $scope.PostDetail.Content,
                 'Category_Id': $scope.PostDetail.Category_Id,
@@ -86,9 +86,9 @@
             );
     };
 
-/******************************************
-       Post to delete
-***********************************************/
+    /******************************************
+           Post to delete
+    ***********************************************/
     $scope.DeletePost = function (Id) {
         Api.DeletePost(Id).
             then(function () {
@@ -99,6 +99,10 @@
                 alert("Not Deleted Successfully");
                 GetPosts();
             });
+    };
+
+    $scope.cancel = function () {
+        window.location.href = '/AdminHome/Index#!/post';
     };
 
 });
@@ -112,26 +116,30 @@ MyApp.controller("AddPostController", function ($scope, Api) {
             $scope.CategoryList = response.data;
         },
         function () {
-            alert("Fail..");
+            alert("Fail to load categories");
         });
     }
     GetTags();
-    function GetTags()
-    {
+    function GetTags() {
         Api.GetTags()
        .then(function (response) {
            $scope.TagList = response.data;
            $scope.SelectedTag = [];
        },
        function () {
-           alert("Fail..");
+           alert("Fail to get tags");
        });
     }
-   // alert("in add post con");
+
+    $scope.cancel = function () {
+        window.location.href = '/Home/Index';
+    }
+
+    // alert("in add post con");
     $scope.AddNewPost = function () {
-               
+
         if ($scope.Title !== null) {
-           // alert("in if condition");
+            // alert("in if condition");
             var postToAdd =
                 {
                     'Title': $scope.Title,
@@ -139,12 +147,12 @@ MyApp.controller("AddPostController", function ($scope, Api) {
                     'Category_Id': $scope.Category,
                     'Tags': $scope.SelectedTag
                 };
-    
+
             //Call service.js method
             Api.AddPost(postToAdd)
                 .then(function (response) {
                     alert("Post added");
-                    window.location.href = '/AdminHome/Index#!/post';
+                    window.location.href = '/Home/Index';
                     $scope.Name = undefined;
                 }, function () {
                     alert("Error in adding");

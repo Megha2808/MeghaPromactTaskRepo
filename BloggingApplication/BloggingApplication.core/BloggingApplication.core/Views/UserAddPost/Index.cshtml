@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<meta charset="utf-8" />
+<script src="../../Scripts/jquery-1.10.2.js"></script>
+<script src="../../Scripts/angular.js"></script>
+<script src="../../Scripts/bootstrap.js"></script>
+<link href="../../Content/bootstrap.css" rel="stylesheet" />
+<script src="../../Scripts/angular-route.js"></script>
+<script src="~/AppAngular/AngularScripts/ControllerScript/route.js"></script>
+<script src="~/AppAngular/AngularScripts/ControllerScript/DisplayCategoryController.js"></script>
+<script src="~/AppAngular/AngularScripts/ControllerScript/DisplayTagController.js"></script>
+<script src="~/AppAngular/AngularScripts/ControllerScript/DisplayPostController.js"></script>
+<script src="~/AppAngular/AngularScripts/ServicesScript/Service.js"></script>
+<script src="~/AppAngular/AngularScripts/ControllerScript/IndexController.js"></script>
+<script src="~/Scripts/angular-animate.js"></script>
+<script src="~/Scripts/angular-resource.js"></script>
+<script src="~/Scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="~/Scripts/PaginationJs.js"></script>
+<style rel="stylesheet" > 
+    .form-inline .form-group input {
+        width: 1000px;
+    }
+
+</style>
+
+<div id="main" ng-app="MyApp" ng-controller="AddPostController">
+    <div class="row">
+        <div style="width:1000px; margin:40px 400px 40px 400px;">
+            <form id="MyForm">
+                <div class="col-xs-5">
+                    <label for="Title">Title</label>
+                    <input id="Title" size="50" type="text" ng-model="Title" class="form-control" placeholder="Title" />
+                </div>
+                <div class="col-xs-11" >
+                    <label for="Content">Content</label>
+                    <textarea name="comment" style="height:100px;width:1000px" form="MyForm" ng-model="Content" class="form-control" placeholder="Content">Enter text here...</textarea>
+                    <!--<input id="Content" type="textarea" ng-model="Content" class="form-control" placeholder="Content" />-->
+                </div>
+                <div class="col-xs-5">
+                    <label for="inputname">Category</label>
+                    <select ng-model="Category" class="form-control"
+                            ng-options="item.Id as item.Name for item in CategoryList" required>
+                        <option value="">Select Category</option>
+                    </select>
+                </div>
+                <div class="col-xs-10">
+                    <label for="inputname">Tags</label>
+                    <select multiple ng-model="SelectedTag" class="form-control" style="height:200px;"
+                            ng-options="item.Name for item in TagList" required></select>
+                </div>
+                <div class="col-xs-10">
+                    <button ng-click="AddNewPost()" class="btn">Save</button>
+                    </div>
+</form>
+        </div>
+    </div>
+</div>

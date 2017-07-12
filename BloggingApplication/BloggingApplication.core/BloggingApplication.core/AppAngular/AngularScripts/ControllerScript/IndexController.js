@@ -1,18 +1,25 @@
 ﻿
-MyApp.controller("IndexController", function ($scope, Api) {
+MyApp.controller("IndexController", function ($scope, $routeParams, Api) {
+
     //$scope.message = "In category";
-   alert("In index");
-   GetPosts();
-   function GetPosts() {
-       // alert("In get post...method.. ");
-       Api.GetPosts()
-       .then(function (response) {
-           $scope.post = response.data;
-       },
-       function () {
-           alert("Fail..");
-       });
-   }
+    // alert("In index");
+    $scope.PageSize = 5;
+    $scope.currentPage = 1;
+    $scope.serial = 1;
+    $scope.index = function (newPageNumber) {
+        $scope.serial = newPageNumber * 10 ;
+    }
+    GetPosts();
+    function GetPosts() {
+        // alert("In get post...method.. ");
+        Api.GetPosts()
+        .then(function (response) {
+            $scope.post = response.data;
+        },
+        function () {
+            alert("Fail toload posts");
+        });
+    }
     /****************************************************
                          Get Tags
      ****************************************************/
@@ -25,9 +32,10 @@ MyApp.controller("IndexController", function ($scope, Api) {
             //alert($scope.tag);
         },
         function () {
-            alert("Fail..to load taglist");
+            alert("Fail to load taglist");
         });
     }
+
     GetCategories();
     function GetCategories() {
         //alert("Get tags.......");
@@ -37,7 +45,7 @@ MyApp.controller("IndexController", function ($scope, Api) {
             //alert($scope.tag);
         },
         function () {
-            alert("Fail..to load Category list");
+            alert("Fail to load Category list");
         });
     }
 
@@ -56,10 +64,11 @@ MyApp.controller("IndexController", function ($scope, Api) {
     };
 
     $scope.GetPostByTagId = function (data) {
+       
         GetPostsByTag();
         function GetPostsByTag() {
             //alert("In get post...method.. ");
-            Api.GetPostsByTagId(data)
+            Api.GetPostsByTagId($routeParams.param2)
             .then(function (response) {
                 $scope.post = response.data;
             },
@@ -67,5 +76,34 @@ MyApp.controller("IndexController", function ($scope, Api) {
                 alert("Fail..");
             });
         };
+    }
+
+
+    $scope.PostDetail = {
+        Id: '',
+        Title: '',
+        Categoryname: '',
+        username: '',
+        createdOn: '',
+        Content: '',
+        partialcontent: ''
+    };
+    $scope.GetPostContentById = function (data) {
+        //alert("in post by id");
+        //alert(data.Id);
+        $scope.PostDetail =
+            {
+                Id: data.Id,
+                Title: data.Title,
+                Categoryname: data.Categoryname,
+                username: data.username,
+                createdOn: data.createdOn,
+                Content: data.Content,
+                partialcontent: data.partialcontent
+            };
+    };
+    $scope.BackToIndex = function () {
+        window.location.href = '/Home/Index';
+        $scope.PostDetail.Id = '';
     }
 });

@@ -38,7 +38,7 @@
     ****************************************************/
 
     $scope.Update = function () {
-       // alert("In update");
+        // alert("In update");
         var tagToUpdate =
             {
                 'Name': $scope.TagDetail.Name,
@@ -57,9 +57,9 @@
             );
     };
 
-/******************************************
-   Tags to delete
-*********************************************/
+    /******************************************
+       Tags to delete
+    *********************************************/
     $scope.DeleteTag = function (Id) {
         Api.DeleteTag(Id).
             then(function () {
@@ -72,18 +72,22 @@
             });
     };
 
+    $scope.cancel = function () {
+        window.location.href = '/AdminHome/Index#!/tag';
+    };
+
 });
 
 MyApp.controller("AddTagController", function ($scope, Api) {
     $scope.AddNewTag = function () {
-       // alert("in add tag con");
+        // alert("in add tag con");
         if ($scope.Name !== '') {
-           // alert("in if condition");
+            // alert("in if condition");
             var tagToAdd =
                 {
                     'Name': $scope.Name
                 };
-            alert($scope.Name);
+            // alert($scope.Name);
 
             //Call service.js method
             Api.AddTag(tagToAdd)
@@ -99,5 +103,9 @@ MyApp.controller("AddTagController", function ($scope, Api) {
         else {
             alert("Please enter all the fields");
         }
+    };
+
+    $scope.cancel = function () {
+        window.location.href = '/AdminHome/Index#!/tag';
     };
 });

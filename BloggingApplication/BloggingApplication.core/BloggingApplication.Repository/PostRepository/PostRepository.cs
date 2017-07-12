@@ -16,7 +16,14 @@ namespace BloggingApplication.Repository.PostRepository
         #region Get Posts
         public IQueryable GetAllPost()
         {
-            
+            //var date = db.Posts.Select(x => x.PostedOn.ToShortDateString());
+            //string content = db.Posts.Select(x => x.Content).ToString();
+            //var contentlength = content.Length;
+            //var partialcontent = "";
+            //if(contentlength>=140)
+            //{
+            //    partialcontent = content.Substring(0, 140);
+            //}
             var data = db.Posts.Where(x=>x.Isdelete==false).Select(x => new
             {
                 Id = x.Id,
@@ -29,7 +36,10 @@ namespace BloggingApplication.Repository.PostRepository
                                 where c.Id == x.Category_Id
                                 select c.Name).FirstOrDefault(),
                 Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                //createdOn = x.PostedOn.ToShortDateString(),
+                partialcontent = x.Content.Length >= 240? x.Content.Substring(0,240):x.Content,
                 createdOn = x.PostedOn,
+                //postedOn = x.PostedOn.Date.ToShortDateString(),
                 Content = x.Content,
             }).OrderByDescending(x => x.createdOn);
             return data;
@@ -130,7 +140,7 @@ namespace BloggingApplication.Repository.PostRepository
         #region GetPostByCategoryId
         public IQueryable GetPostByCategoryId(int categoryid)
         {
-            var data = db.Posts.Where(x => x.Category_Id == categoryid)
+            var data = db.Posts.Where(x => x.Category_Id == categoryid && x.Isdelete==false)
                 .Select(x=> new
                 {
                     Id = x.Id,
@@ -143,6 +153,7 @@ namespace BloggingApplication.Repository.PostRepository
                                     where c.Id == x.Category_Id
                                     select c.Name).FirstOrDefault(),
                     Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                    partialcontent = x.Content.Length >= 240 ? x.Content.Substring(0, 240) : x.Content,
                     createdOn = x.PostedOn,
                     Content = x.Content,
                 }).OrderByDescending(x => x.createdOn);
@@ -153,7 +164,7 @@ namespace BloggingApplication.Repository.PostRepository
         #region GetPostByTagId
         public IQueryable GetPostByTagId(int tagid)
         {
-            var data = db.Posts.Where(x => x.Tags.Select(m=>m.Id).Contains(tagid))
+            var data = db.Posts.Where(x => x.Tags.Select(m=>m.Id).Contains(tagid) && x.Isdelete==false)
                             .Select(x => new
                             {
                                 Id = x.Id,
@@ -168,6 +179,7 @@ namespace BloggingApplication.Repository.PostRepository
                                 Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
                                 createdOn = x.PostedOn,
                                 Content = x.Content,
+                                partialcontent = x.Content.Length >= 240 ? x.Content.Substring(0, 240) : x.Content,
                             }).OrderByDescending(x => x.createdOn);
             return data;
 

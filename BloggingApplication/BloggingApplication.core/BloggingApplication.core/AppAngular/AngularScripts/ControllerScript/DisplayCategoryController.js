@@ -1,18 +1,18 @@
 ﻿MyApp.controller("DisplayCategoryController", function ($scope, Api) {
 
     //$scope.message = "In category";
-   // alert("In cat.....");
+    // alert("In cat.....");
 
     /****************************************************
-                         Get Tags
+                         Get Category
      ****************************************************/
     GetCategories();
     function GetCategories() {
-       // alert("Get cats.......");
+        // alert("Get cats.......");
         Api.GetCategories()
         .then(function (response) {
             $scope.category = response.data;
-           // alert($scope.category);
+            // alert($scope.category);
         },
         function () {
             alert("Fail..");
@@ -20,7 +20,7 @@
     }
 
     /****************************************************
-                     Edit  Tag...........
+                     Edit  Category
     ****************************************************/
     $scope.CategoryDetail = {
         Name: '',
@@ -35,7 +35,7 @@
     };
 
     /****************************************************
-                         Update  Tag...........
+                         Update Category
     ****************************************************/
 
     $scope.Update = function () {
@@ -58,35 +58,44 @@
             );
     };
 
-/******************************************
-        Tags
-***********************************************/
+    $scope.cancel = function () {
+        window.location.href = '/AdminHome/Index#!/category';
+    }
+
+    /******************************************
+            Category to delete
+    ***********************************************/
     $scope.DeleteCategory = function (Id) {
         Api.DeleteCategory(Id).
             then(function () {
                 window.location.href = '/AdminHome/Index#!/category';
                 alert("Deleted Successfully.");
-                GetCategories();               
+                GetCategories();
             }, function () {
                 alert("Error while delete");
                 GetCategories();
             });
     };
-
-
-
 });
 
+/******************************************
+        Add New Category
+***********************************************/
 MyApp.controller("AddCategoryController", function ($scope, Api) {
+
+    $scope.cancel = function () {
+        window.location.href = '/AdminHome/Index#!/category';
+    }
+
     $scope.AddCategory = function () {
-       // alert("in add cat con");
+        // alert("in add cat con");
         if ($scope.Name !== '') {
-           // alert("in if condition");
+            // alert("in if condition");
             var tagToAdd =
                 {
                     'Name': $scope.Name
                 };
-            alert($scope.Name);
+            // alert($scope.Name);
 
             //Call service.js method
             Api.AddCategory(tagToAdd)

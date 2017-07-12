@@ -1,6 +1,6 @@
 ﻿/// <reference path="D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\Scripts/angular.js" />
 
-var MyApp = angular.module("MyApp", ['ngRoute','Service']);
+var MyApp = angular.module("MyApp", ['ngRoute', 'Service', 'angularUtils.directives.dirPagination', 'ui.bootstrap','ngResource','ngAnimate']);
 
 MyApp.config(['$routeProvider',
     function ($routeProvider) {
@@ -28,5 +28,18 @@ MyApp.config(['$routeProvider',
          when('/AddPost', {
              templateUrl: '/AppAngular/Html/AddPost.html',
              controller: 'AddPostController'
-         })
+         }).
+        when('/Tag/:param1/:param2',
+        {
+            templateUrl: ' ',
+            controller: 'TagController'
+        })
     }]);
+
+MyApp.filter('startFrom', function () {
+    return function (input, start) {
+        if (!input || !input.length) { return; }
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+});

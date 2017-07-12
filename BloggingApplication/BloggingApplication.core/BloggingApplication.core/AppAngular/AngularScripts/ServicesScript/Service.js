@@ -8,7 +8,6 @@ Service.factory('Api', function ($http) {
     Tag Service
     ************************************************************************/
     //alert("In service");
-    ////Get all the employeeeeee.........
     Api.GetTags = function ()
     {
         return $http.get('/api/Tags');
@@ -89,7 +88,7 @@ Service.factory('Api', function ($http) {
     };
 
     Api.GetPostsByCategoryId = function (id) {
-        alert("CategoryId");
+        //alert("CategoryId");
         var request = $http({
             method: 'get',
             url: '/api/Posts/categoryId/' + id,
@@ -99,7 +98,7 @@ Service.factory('Api', function ($http) {
     };
 
     Api.GetPostsByTagId = function (id) {
-        alert("InPostId");
+        //alert("InPostId");
         var request = $http({
             method: 'get',
             url: '/api/Posts/tagId/' + id,
@@ -109,7 +108,7 @@ Service.factory('Api', function ($http) {
     };
 
     Api.UpdatePost = function (data) {
-        alert("api methos");
+        //alert("api methos");
         var request = $http({
             method: 'put',
             url: '/api/editpost/' + data.Id,
