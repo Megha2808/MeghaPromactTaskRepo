@@ -74,6 +74,7 @@
 
     $scope.cancel = function () {
         window.location.href = '/AdminHome/Index#!/tag';
+        $scope.TagDetail.Id = '';
     };
 
 });

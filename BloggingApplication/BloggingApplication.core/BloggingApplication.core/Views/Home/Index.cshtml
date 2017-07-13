@@ -19,70 +19,20 @@
 <script src="~/Scripts/angular-resource.js"></script>
 <script src="~/Scripts/angular-animate.js"></script>
 
-<div id="main" ng-app="MyApp" ng-controller="IndexController">
-    <div style="margin:10px;" ng-hide="PostDetail.Id != '' ">
-        <form>
-            <div class="form-group" style="float:right">
-                <span class="glyphicon glyphicon-search"></span> <input type="text" placeholder="Search By Title" ng-model="txtFilter" />
-            </div>
-        </form>
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div id="main" ng-app="MyApp" >
+    
+    <div id="blog" class="" style="float:left;margin-top:45px;text-align: justify;text-justify: inter-word;" ng-view>
+
     </div>
-    <div id="blog" class="" style="float:left;margin-top:45px;text-align: justify;text-justify: inter-word;">
-        <div id="blogpagination" ng-hide="PostDetail.Id != '' ">
-            <div id="repeate" dir-paginate="p in filtertitle = (post | filter:{Title: txtFilter}) |itemsPerPage: 5 " current-page="currentPage" style="padding:5px;">
-                <div style="border:2px solid black; margin-bottom:10px; width:690px;">
-                    <h3 style="font-weight:bold;text-transform: uppercase;">
-                        <a ng-click="GetPostContentById(post[ (($index) + (currentPage-1) * 5) ])">
-                            {{p.Title}}
-                        </a>
-                    </h3>
-                    <p>Posted by <span style="font-weight:bold"> "{{p.username}}" </span> in <span style="font-weight:bold;"> {{p.Categoryname}} </span> on <span style="font-weight:bold"> {{ p.createdOn}}</span> </p>
-                    <p>{{p.partialcontent}}...</p>
-                </div>
-            </div>
-            <div ng-hide="!post.length" style="float:left;">
-                <div ng-show="!filtertitle.length" style="float:left;">
-                    <h1>No Blogs are Available of this search keyword</h1>
-                </div>
-            </div>
-            <div ng-show="!post.length" style="float:left;">
-                <h1>No Blogs are Available </h1>
-            </div>
-            <dir-pagination-controls max-size="5"
-                                     direction-links="true"
-                                     boundary-links="true"
-                                     ng-model="currentPage">
-            </dir-pagination-controls>
-        </div>
-
-        @*<div id="blogpagination" ng-hide="PostDetail.Id != '' ">
-                <div id="repeate" ng-repeat="p in post  |startFrom: currentPage-1 | limitTo: PageSize |filter:{Title: txtFilter}" style="padding:5px;">
-                    <div style="border:2px solid black; margin-bottom:10px; width:690px;">
-                        <h3 style="font-weight:bold;text-transform: uppercase;"><a ng-click="GetPostContentById(post[(currentPage-1)* PageSize + $index])">{{p.Title}}</a></h3>
-                        <p>Posted by <span style="font-weight:bold"> "{{p.username}}" </span> in <span style="font-weight:bold;"> {{p.Categoryname}} </span> on <span style="font-weight:bold"> {{ p.createdOn}}</span> </p>
-                        <p>{{p.partialcontent}}...</p>
-                    </div>
-
-                </div>
-
-                <ul uib-pagination total-items="post.length" ng-model="currentPage" items-per-page="5"></ul>﻿
-
-            </div>*@
-        <div id="fullcontent" ng-show="PostDetail.Id != '' ">
-            <div style="border:2px solid black; margin:10px; width:690px;">
-                <h1 style="font-weight:bold; color:red; align-content:center;text-transform: uppercase;">{{PostDetail.Title}}</h1>
-                <p style="font-size:medium">Posted by <span style="font-weight:bold"> "{{PostDetail.username}}" </span> in <span style="font-weight:bold;"> {{PostDetail.Categoryname}} </span> on <span style="font-weight:bold"> {{ PostDetail.createdOn}}</span> </p>
-                <p style="font-size:large">{{PostDetail.Content}}</p>
-                <a ng-click="BackToIndex()"> << Back to blogs </a>
-            </div>
-        </div>
-    </div>
-    <div id="sidebar" style="float:right;text-align: justify;text-justify: inter-word;" ng-hide="PostDetail.Id != '' ">
+    <div ng-controller="IndexController" id="sidebar" style="float:right;text-align: justify; margin-top:78px ; text-justify: inter-word;" ng-hide="PostDetail.Id != '' ">
         <div id="Category" style="height:300px;width:400px; margin:10px; border:2px solid black; overflow:auto">
             <h3 style="text-align:center">Categories</h3>
             <div ng-repeat="c in categorylist">
                 <ul>
-                    <li><a ng-click="GetPostByCategoryId(c.Id)">{{c.Name}}</a></li>
+                    <li><a href="#!/Category/{{c.Name}}/{{c.Id}}">{{c.Name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -90,7 +40,7 @@
             <h3 style="text-align:center">Tags</h3>
             <div ng-repeat="t in taglist">
                 <ul>
-                    <li><a href="#!/Tag/{{t.Name}}/{{t.Id}}" ng-click="GetPostByTagId(t.Id)">{{t.Name}}</a></li>
+                    <li><a href="#!/Tag/{{t.Name}}/{{t.Id}}">{{t.Name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -98,3 +48,5 @@
 </div>
 
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

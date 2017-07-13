@@ -31,9 +31,25 @@ MyApp.config(['$routeProvider',
          }).
         when('/Tag/:param1/:param2',
         {
-            templateUrl: ' ',
-            controller: 'TagController'
+            templateUrl: '/AppAngular/Html/DisplayBlogs.html',
+            controller: 'GetPostByTagController'
+        }).
+            when('/Category/:param1/:param2',
+        {
+            templateUrl: '/AppAngular/Html/DisplayBlogs.html',
+            controller: 'GetPostByCategoryController'
+        }).
+        when('/',
+        {
+            templateUrl: '/AppAngular/Html/DisplayBlogs.html',
+            controller: 'IndexController'
+        }).
+         when('/Admin',
+        {
+            templateUrl: '/AppAngular/Html/DisplayCategory.html',
+            controller: 'DisplayCategoryController'
         })
+        
     }]);
 
 MyApp.filter('startFrom', function () {

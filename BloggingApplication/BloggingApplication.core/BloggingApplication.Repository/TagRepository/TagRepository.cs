@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BloggingApplication.DomainModel.Models;
-using BloggingApplication.DomainModel.ViewModels;
 using BloggingApplication.DomainModel.Context;
 
 namespace BloggingApplication.Repository.TagRepository
@@ -13,14 +12,6 @@ namespace BloggingApplication.Repository.TagRepository
     {
         //database context
         ApplicationDbContext db = new ApplicationDbContext();
-
-        //#region constructotr
-        ////Constructormethod
-        //public TagRepository(ApplicationDbContext ContextDb)
-        //{
-        //    db = ContextDb;
-        //}
-        //#endregion
 
         #region AddTag
         public void AddTag(Tag T)

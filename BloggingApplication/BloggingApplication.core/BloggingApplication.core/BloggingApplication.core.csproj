@@ -234,6 +234,7 @@
     <Content Include="AppAngular\Html\AddCategory.html" />
     <Content Include="AppAngular\Html\AddPost.html" />
     <Content Include="AppAngular\Html\AddTag.html" />
+    <Content Include="AppAngular\Html\DisplayBlogs.html" />
     <Content Include="App_Data\BlogDb.mdf" />
     <Content Include="App_Data\BlogDb_log.ldf">
       <DependentUpon>BlogDb.mdf</DependentUpon>
@@ -244,7 +245,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="AppAngular\Html\AdminIndexPage.html" />
     <Content Include="AppAngular\Html\DisplayCategory.html" />
     <Content Include="AppAngular\Html\DisplayPost.html" />
     <Content Include="AppAngular\Html\DisplayTags.html" />

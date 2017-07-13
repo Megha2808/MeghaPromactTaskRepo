@@ -8,7 +8,7 @@ namespace BloggingApplication.core.Controllers
 {
     public class AdminHomeController : Controller
     {
-        // GET: AdminHome
+        // GET: AdminHome       
         [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {

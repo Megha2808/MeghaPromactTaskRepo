@@ -103,6 +103,7 @@
 
     $scope.cancel = function () {
         window.location.href = '/AdminHome/Index#!/post';
+        $scope.PostDetail.Id = '';
     };
 
 });

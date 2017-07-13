@@ -16,15 +16,7 @@ namespace BloggingApplication.Repository.PostRepository
         #region Get Posts
         public IQueryable GetAllPost()
         {
-            //var date = db.Posts.Select(x => x.PostedOn.ToShortDateString());
-            //string content = db.Posts.Select(x => x.Content).ToString();
-            //var contentlength = content.Length;
-            //var partialcontent = "";
-            //if(contentlength>=140)
-            //{
-            //    partialcontent = content.Substring(0, 140);
-            //}
-            var data = db.Posts.Where(x=>x.Isdelete==false).Select(x => new
+            var data = db.Posts.Where(x => x.Isdelete == false).Select(x => new
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -36,16 +28,15 @@ namespace BloggingApplication.Repository.PostRepository
                                 where c.Id == x.Category_Id
                                 select c.Name).FirstOrDefault(),
                 Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
-                //createdOn = x.PostedOn.ToShortDateString(),
-                partialcontent = x.Content.Length >= 240? x.Content.Substring(0,240):x.Content,
+                partialcontent = x.Content.Length >= 240
+                    ? x.Content.Substring(0, 240)
+                    : x.Content,
                 createdOn = x.PostedOn,
-                //postedOn = x.PostedOn.Date.ToShortDateString(),
                 Content = x.Content,
             }).OrderByDescending(x => x.createdOn);
             return data;
         }
         #endregion Get Post
-
 
         #region Add Post
         public void AddPost(Post p, string userId)
@@ -75,48 +66,12 @@ namespace BloggingApplication.Repository.PostRepository
         #region update Post
         public void EditPost(Post model, string userid)
         {
-            Post p = db.Posts.Include(x=>x.Tags).SingleOrDefault(x => x.Id == model.Id);
+            Post p = db.Posts.Include(x => x.Tags).SingleOrDefault(x => x.Id == model.Id);
             p.Isdelete = false;
             p.Category_Id = model.Category_Id;
-            p.Modified= DateTime.Now.Date;
-
-            //p.Tags.Where(m=> ! model.Tags.Contains(p.Tags.Id))
-            //// Remove deselected skills
-            //teacher.skills.Where(m => !model.skillIds.Contains(m.Id))
-            //    .ToList().ForEach(skill => teacher.skills.Remove(skill));
-
-            //// Add new skills
-            //var existingSkillIds = teacher.skills.Select(m => m.Id);
-            //db.Skills.Where(m => model.skillIds.Exclude(existingSkillIds).Contains(m.Id))
-            //    .ToList().ForEach(skill => teacher.skills.Add(skill));
-
-            //var earliertags = p.Tags;
-            ////To avoid adding New tags in database...
-            //p.Tags = model.Tags;
-
-            
-            //    foreach (var assignedtag in p.Tags)
-            //    {
-            //    foreach(var i in earliertags)
-            //    {
-            //        if(i.Id==assignedtag.Id)
-            //        {
-
-            //        }
-            //        else
-            //        {
-            //            db.Entry(assignedtag).State = EntityState.Unchanged;
-            //        }
-            //    }
-                   
-                                         
-                       
-            //    }                              
-            
-                     
-           
+            p.Modified = DateTime.Now.Date;
             db.Entry(p).State = System.Data.Entity.EntityState.Modified;
-           db.SaveChanges();
+            db.SaveChanges();
         }
         #endregion
 
@@ -140,8 +95,8 @@ namespace BloggingApplication.Repository.PostRepository
         #region GetPostByCategoryId
         public IQueryable GetPostByCategoryId(int categoryid)
         {
-            var data = db.Posts.Where(x => x.Category_Id == categoryid && x.Isdelete==false)
-                .Select(x=> new
+            var data = db.Posts.Where(x => x.Category_Id == categoryid && x.Isdelete == false)
+                .Select(x => new
                 {
                     Id = x.Id,
                     Title = x.Title,
@@ -153,7 +108,9 @@ namespace BloggingApplication.Repository.PostRepository
                                     where c.Id == x.Category_Id
                                     select c.Name).FirstOrDefault(),
                     Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
-                    partialcontent = x.Content.Length >= 240 ? x.Content.Substring(0, 240) : x.Content,
+                    partialcontent = x.Content.Length >= 240
+                        ? x.Content.Substring(0, 240)
+                        : x.Content,
                     createdOn = x.PostedOn,
                     Content = x.Content,
                 }).OrderByDescending(x => x.createdOn);
@@ -164,7 +121,7 @@ namespace BloggingApplication.Repository.PostRepository
         #region GetPostByTagId
         public IQueryable GetPostByTagId(int tagid)
         {
-            var data = db.Posts.Where(x => x.Tags.Select(m=>m.Id).Contains(tagid) && x.Isdelete==false)
+            var data = db.Posts.Where(x => x.Tags.Select(m => m.Id).Contains(tagid) && x.Isdelete == false)
                             .Select(x => new
                             {
                                 Id = x.Id,

@@ -60,6 +60,7 @@
 
     $scope.cancel = function () {
         window.location.href = '/AdminHome/Index#!/category';
+        $scope.CategoryDetail.Id = '';
     }
 
     /******************************************

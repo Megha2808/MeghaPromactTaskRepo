@@ -1,5 +1,4 @@
 ﻿using BloggingApplication.DomainModel.Models;
-using BloggingApplication.DomainModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

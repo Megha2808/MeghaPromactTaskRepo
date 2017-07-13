@@ -7,16 +7,14 @@ using System.Web.Mvc;
 namespace BloggingApplication.core.Controllers
 {
     public class HomeController : Controller
-    {
+    {       
         public ActionResult Index()
         {
-
             var rolename = TempData["roleName"];
             var userid = TempData["UserId"];
             TempData.Keep("roleName");
             TempData.Keep("UserId");
             return View();
         }
-
     }
 }
