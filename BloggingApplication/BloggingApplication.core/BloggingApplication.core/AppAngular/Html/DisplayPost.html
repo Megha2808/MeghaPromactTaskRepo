@@ -56,7 +56,7 @@
                     </ul>
                 </td>
                 
-                <td>{{p.createdOn}}</td>
+                <td>{{p.createdOn| date:'longDate'}}</td>
 
                 <td><a class="btn btn-primary btn-xs" ng-click="GetPostById(post[$index])"><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td width="5px"><a class="btn btn-danger btn-xs" ng-click="DeletePost(p.Id)"> <span class="glyphicon glyphicon-trash"></span></a></td>
