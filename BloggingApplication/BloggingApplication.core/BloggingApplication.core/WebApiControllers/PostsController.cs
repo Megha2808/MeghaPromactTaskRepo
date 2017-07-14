@@ -17,7 +17,6 @@ namespace BloggingApplication.core.WebApiControllers
     public class PostsController : ApiController
     {
         IPostRepository _postRepository = new PostRepository();
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Posts
         [Route("api/Posts")]
@@ -25,7 +24,7 @@ namespace BloggingApplication.core.WebApiControllers
         {
             var data = _postRepository.GetAllPost();
             return Ok(data);
-            // return db.Posts;
+
         }
 
         // GET: api/Posts/5
@@ -55,28 +54,18 @@ namespace BloggingApplication.core.WebApiControllers
             {
                 return BadRequest(ModelState);
             }
-
             if (id != post.Id)
             {
                 return BadRequest();
             }
-
-
-            _postRepository.EditPost(post,userId);
+            _postRepository.EditPost(post, userId);
             try
             {
-                
+
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PostExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -97,12 +86,6 @@ namespace BloggingApplication.core.WebApiControllers
                 _postRepository.AddPost(post, userId);
                 return Ok();
             }
-           
-
-            //db.Posts.Add(post);
-            //db.SaveChanges();
-
-           // return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
         }
 
         // DELETE: api/Posts/5
@@ -117,24 +100,10 @@ namespace BloggingApplication.core.WebApiControllers
                 return NotFound();
             }
             _postRepository.DeletePost(id);
-            //db.Posts.Remove(post);
-            //db.SaveChanges();
-
             return Ok(post);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
-        private bool PostExists(int id)
-        {
-            return db.Posts.Count(e => e.Id == id) > 0;
-        }
+
     }
 }

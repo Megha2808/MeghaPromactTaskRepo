@@ -12,7 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using BloggingApplication.core.Models;
 using BloggingApplication.DomainModel.Models;
-using BloggingApplication.DomainModel.Context;
+
 
 namespace BloggingApplication.core
 {

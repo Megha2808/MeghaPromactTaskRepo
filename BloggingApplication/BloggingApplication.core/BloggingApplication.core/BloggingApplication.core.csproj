@@ -229,7 +229,6 @@
     <Content Include="AppAngular\AngularScripts\ControllerScript\IndexController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\route.js" />
     <Content Include="AppAngular\AngularScripts\ServicesScript\Service.js" />
-    <Content Include="AppAngular\Css\AdminIndexpage.css" />
     <Content Include="AppAngular\Html\AddCategory.html" />
     <Content Include="AppAngular\Html\AddPost.html" />
     <Content Include="AppAngular\Html\AddTag.html" />
@@ -1071,9 +1070,7 @@
     <Content Include="Views\AdminHome\Index.cshtml" />
     <Content Include="Views\UserAddPost\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Roles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

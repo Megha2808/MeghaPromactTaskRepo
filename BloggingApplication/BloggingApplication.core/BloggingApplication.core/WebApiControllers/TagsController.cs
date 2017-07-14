@@ -14,15 +14,9 @@ using BloggingApplication.Repository.TagRepository;
 namespace BloggingApplication.core.WebApiControllers
 {
     public class TagsController : ApiController
-    {
-        //private ApplicationDbContext db = new ApplicationDbContext();
+    {        
          ITagRepository _tagRepository = new TagRepository();
-
-        //public TagsController(TagRepository repository)
-        //{
-        //    _tagRepository = repository;
-        //}
-
+      
         // GET: api/Tags
         [Route("api/Tags")]
         public IHttpActionResult GetTags()
@@ -53,9 +47,7 @@ namespace BloggingApplication.core.WebApiControllers
             {
                 return BadRequest(ModelState);
             }
-                      
-           // db.Entry(tag).State = EntityState.Modified;
-
+                               
             try
             {
                 _tagRepository.EditTag(tag);               
@@ -81,11 +73,7 @@ namespace BloggingApplication.core.WebApiControllers
             {
                 _tagRepository.AddTag(tag);
                 return Ok();
-            }
-            //db.Tags.Add(tag);
-            //db.SaveChanges();
-
-            //return CreatedAtRoute("DefaultApi", new { id = tag.Id }, tag);
+            }           
         }
 
         // DELETE: api/Tags/5
@@ -99,9 +87,7 @@ namespace BloggingApplication.core.WebApiControllers
                 return NotFound();
             }
 
-            _tagRepository.DeleteTag(id);
-            //db.Tags.Remove(tag);
-            //db.SaveChanges();
+            _tagRepository.DeleteTag(id);           
             return Ok(tag);
         }
 

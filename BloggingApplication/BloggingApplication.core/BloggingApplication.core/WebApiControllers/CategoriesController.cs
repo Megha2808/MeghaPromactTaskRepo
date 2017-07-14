@@ -23,7 +23,6 @@ namespace BloggingApplication.core.WebApiControllers
         {
             var data = _categoryRepository.GetAllCategory();
             return Ok(data);
-            //return db.Categories;
         }
 
         // GET: api/Categories/5
@@ -50,12 +49,9 @@ namespace BloggingApplication.core.WebApiControllers
                 return BadRequest(ModelState);
             }
 
-            //  db.Entry(category).State = EntityState.Modified;
-
             try
             {
                 _categoryRepository.EditCategory(category);
-                // db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,11 +74,7 @@ namespace BloggingApplication.core.WebApiControllers
             {
                 _categoryRepository.AddCategory(category);
                 return Ok();
-            }
-           
-            // db.Categories.Add(category);
-            // db.SaveChanges();
-            //return CreatedAtRoute("DefaultApi", new { id = category.Id }, category);
+            }                       
         }
 
         // DELETE: api/Categories/5
@@ -96,20 +88,9 @@ namespace BloggingApplication.core.WebApiControllers
                 return NotFound();
             }
 
-            _categoryRepository.DeleteCategory(id);
-            //  db.Categories.Remove(category);
-            // db.SaveChanges();
-
+            _categoryRepository.DeleteCategory(id);           
             return Ok(category);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                //   db.Dispose();
-            }
-            base.Dispose(disposing);
-        }        
+              
     }
 }
