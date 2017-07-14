@@ -47,27 +47,17 @@ namespace BloggingApplication.core
                 if (chkUser.Succeeded)
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Admin");
-
                 }
             }
 
             // creating Creating Manager role    
-            if (!roleManager.RoleExists("Manager"))
+            if (!roleManager.RoleExists("User"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Manager";
+                role.Name = "User";
                 roleManager.Create(role);
-
             }
-
-            // creating Creating Employee role    
-            if (!roleManager.RoleExists("Employee"))
-            {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Employee";
-                roleManager.Create(role);
-
-            }
+            
         }
 
     }
