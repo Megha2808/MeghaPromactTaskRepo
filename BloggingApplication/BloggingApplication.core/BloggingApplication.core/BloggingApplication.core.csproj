@@ -1073,6 +1073,7 @@
     <Content Include="Views\UserAddPost\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AngularApp\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>
   <ItemGroup>
