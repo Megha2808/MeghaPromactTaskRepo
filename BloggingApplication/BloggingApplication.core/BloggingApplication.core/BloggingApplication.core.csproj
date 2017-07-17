@@ -214,7 +214,6 @@
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserAddPostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -295,6 +294,8 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="bs-config.json" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
@@ -1038,6 +1039,12 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="src\styles.css" />
+    <Content Include="src\systemjs-angular-loader.js" />
+    <Content Include="src\systemjs.config.extras.js" />
+    <Content Include="src\systemjs.config.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1073,10 +1080,10 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\AdminHome\Index.cshtml" />
     <Content Include="Views\UserAddPost\Index.cshtml" />
+    <Content Include="src\tsconfig.json" />
+    <Content Include="tslint.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Roles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1096,10 +1103,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="AngularApp\file1.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\app.routing.ts" />
+    <TypeScriptCompile Include="src\app\components\home.component.ts" />
+    <TypeScriptCompile Include="src\app\main.ts" />
+    <TypeScriptCompile Include="src\app\Models\tag.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,7 +7,7 @@
 </div>
 <div id="blogpagination" ng-hide="PostDetail.Id != '' ">  
     <div id="repeate" dir-paginate="p in filtertitle = (post | filter:{Title: txtFilter}) |itemsPerPage: 5 " current-page="currentPage" style="padding:5px;">
-        <div style="border:2px solid black; margin-bottom:10px; width:690px;">
+        <div style="border:2px solid black; margin-bottom:10px; width:500px;">
             <h3 style="font-weight:bold;text-transform: uppercase;">
                 <a ng-click="GetPostContentById(post[ (($index) + (currentPage-1) * 5) ])">
                     {{p.Title}}
@@ -34,7 +34,7 @@
 
 
 <div id="fullcontent" ng-show="PostDetail.Id != '' ">
-    <div style="border:2px solid black; margin:10px; width:690px;">
+    <div style="border:2px solid black; margin:10px; width:500px;">
         <h1 style="font-weight:bold; color:red; align-content:center;text-transform: uppercase;">{{PostDetail.Title}}</h1>
         <p style="font-size:medium">Posted by <span style="font-weight:bold"> "{{PostDetail.username}}" </span> in <span style="font-weight:bold;"> {{PostDetail.Categoryname}} </span> on <span style="font-weight:bold"> {{ PostDetail.createdOn| date:'longDate'}}</span> </p>
         <p style="font-size:large">{{PostDetail.Content}}</p>

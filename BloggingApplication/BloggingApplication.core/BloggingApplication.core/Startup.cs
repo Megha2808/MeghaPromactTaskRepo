@@ -51,7 +51,7 @@ namespace BloggingApplication.core
                 }
             }
 
-            // creating Creating Manager role    
+            // creating Creating user role    
             if (!roleManager.RoleExists("User"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
