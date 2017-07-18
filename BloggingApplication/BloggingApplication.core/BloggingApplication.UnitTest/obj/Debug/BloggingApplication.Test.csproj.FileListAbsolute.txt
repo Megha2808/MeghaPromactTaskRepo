@@ -62,3 +62,5 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.Test.csprojResolveAssemblyReference.cache
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.UnitTest.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.UnitTest.pdb
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Net.Http.Formatting.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Net.Http.Formatting.xml

@@ -174,3 +174,7 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\obj\Debug\BloggingApplication.core.csprojResolveAssemblyReference.cache
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\obj\Debug\BloggingApplication.core.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\obj\Debug\BloggingApplication.core.pdb
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.Integration.Mvc.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.Integration.Mvc.xml

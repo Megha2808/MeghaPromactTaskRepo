@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BloggingApplication.core.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace BloggingApplication.core
     {
         protected void Application_Start()
         {
+            AutofacConfig.RegisterComponents();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);//WEB API 1st
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

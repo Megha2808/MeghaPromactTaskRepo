@@ -58,6 +58,7 @@ namespace BloggingApplication.core.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
+        [Route("Account/Login")]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -67,6 +68,7 @@ namespace BloggingApplication.core.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
+        [Route("Account/Login")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
@@ -76,10 +78,16 @@ namespace BloggingApplication.core.Controllers
             {
                 return View(model);
             }
+
+
             var user = await UserManager.FindByEmailAsync(model.Email);
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+           
+            if(user!=null)
+            { 
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:
@@ -97,9 +105,16 @@ namespace BloggingApplication.core.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Please enter valid Password");
                     return View(model);
             }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Please Enter valid Email id");
+                return View(model);
+            }
+            
         }
 
         //
@@ -148,6 +163,7 @@ namespace BloggingApplication.core.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
+        [Route("Account/Register")]
         public ActionResult Register()
         {
             return View();
@@ -158,6 +174,7 @@ namespace BloggingApplication.core.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("Account/Register")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)

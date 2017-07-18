@@ -10,6 +10,7 @@ namespace BloggingApplication.core.Controllers
     {
         // GET: UserAddPost
         [Authorize(Roles = "User")]
+        [Route("UserAddPost/Index")]
         public ActionResult Index()
         {
             var rolename = TempData["roleName"];

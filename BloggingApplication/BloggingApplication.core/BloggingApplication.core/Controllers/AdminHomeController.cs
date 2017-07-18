@@ -10,6 +10,7 @@ namespace BloggingApplication.core.Controllers
     {
         // GET: AdminHome       
         [Authorize(Roles ="Admin")]
+        [Route("AdminHome/Index")]
         public ActionResult Index()
         {
             var rolename = TempData["roleName"];

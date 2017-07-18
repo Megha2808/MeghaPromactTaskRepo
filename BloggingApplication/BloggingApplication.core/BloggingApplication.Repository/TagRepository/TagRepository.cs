@@ -16,9 +16,8 @@ namespace BloggingApplication.Repository.TagRepository
         #region AddTag
         public void AddTag(Tag T)
         {
-
-            db.Tags.Add(T);
-            db.SaveChanges();
+           db.Tags.Add(T);
+           db.SaveChanges();
         }
         #endregion
 

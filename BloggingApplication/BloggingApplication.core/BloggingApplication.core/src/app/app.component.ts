@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 @Component({
     selector: "user-app",
     template: `
@@ -7,7 +7,8 @@ import { Component } from '@angular/core'
                        <div class='container-fluid'>
                          <ul class='nav navbar-nav'>
                            <li><a [routerLink]="['home']">Home</a></li>
-                      </ul>
+<li><a [routerLink]="['tag']">Tags Management</a></li>                      
+</ul>
                       </div>
                  </nav>    
               <div class='container'>
