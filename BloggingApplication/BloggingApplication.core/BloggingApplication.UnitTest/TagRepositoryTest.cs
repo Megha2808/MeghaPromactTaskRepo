@@ -1,5 +1,4 @@
-﻿using BloggingApplication.DomainModel.Context;
-using BloggingApplication.Repository.TagRepository;
+﻿using BloggingApplication.Repository.TagRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

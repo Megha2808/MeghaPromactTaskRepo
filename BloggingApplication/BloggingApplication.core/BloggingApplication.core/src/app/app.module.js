@@ -23,8 +23,10 @@ var ng2_bs3_modal_1 = require("ng2-bs3-modal/ng2-bs3-modal");
 var http_1 = require("@angular/http");
 var app_routing_1 = require("./app.routing");
 var home_component_1 = require("./components/home.component");
-var tag_component_1 = require("./components/tag.component");
-var tag_service_1 = require("./Service/tag.service");
+var tag_component_1 = require("./components/tag/tag.component");
+var category_component_1 = require("./components/category/category.component");
+var post_component_1 = require("./components/post/post.component");
+var service_1 = require("./Service/service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -33,8 +35,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, tag_component_1.TagComponent],
-        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, tag_service_1.TagService],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, service_1.Service],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class TagService {
+export class Service {
     constructor(private _http: Http) { }
 
     get(url: string): Observable<any> {

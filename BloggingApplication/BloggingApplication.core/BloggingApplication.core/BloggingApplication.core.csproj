@@ -241,7 +241,6 @@
     <Content Include="AppAngular\AngularScripts\ControllerScript\IndexController.js" />
     <Content Include="AppAngular\AngularScripts\ControllerScript\route.js" />
     <Content Include="AppAngular\AngularScripts\ServicesScript\Service.js" />
-    <Content Include="AppAngular\Css\AdminIndexpage.css" />
     <Content Include="AppAngular\Html\AddCategory.html" />
     <Content Include="AppAngular\Html\AddPost.html" />
     <Content Include="AppAngular\Html\AddTag.html" />
@@ -1049,7 +1048,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="src\app\components\tag.component.html" />
+    <Content Include="src\app\components\category\category.component.html" />
+    <Content Include="src\app\components\post\post.component.html" />
+    <Content Include="src\app\components\tag\tag.component.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.css" />
@@ -1094,6 +1095,7 @@
     <Content Include="src\tsconfig.json" />
     <Content Include="tslint.json" />
     <Content Include="Views\Home\Tag.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1122,11 +1124,15 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\app.routing.ts" />
+    <TypeScriptCompile Include="src\app\components\category\category.component.ts" />
     <TypeScriptCompile Include="src\app\components\home.component.ts" />
-    <TypeScriptCompile Include="src\app\components\tag.component.ts" />
+    <TypeScriptCompile Include="src\app\components\post\post.component.ts" />
+    <TypeScriptCompile Include="src\app\components\tag\tag.component.ts" />
     <TypeScriptCompile Include="src\app\main.ts" />
+    <TypeScriptCompile Include="src\app\Models\category.ts" />
+    <TypeScriptCompile Include="src\app\Models\post.ts" />
     <TypeScriptCompile Include="src\app\Models\tag.ts" />
-    <TypeScriptCompile Include="src\app\Service\tag.service.ts" />
+    <TypeScriptCompile Include="src\app\Service\service.ts" />
     <TypeScriptCompile Include="src\app\Shared\enum.ts" />
     <TypeScriptCompile Include="src\app\Shared\global.ts" />
   </ItemGroup>

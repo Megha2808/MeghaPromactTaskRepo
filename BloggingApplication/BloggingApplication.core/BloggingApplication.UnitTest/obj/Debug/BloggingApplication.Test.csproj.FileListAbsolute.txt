@@ -64,3 +64,7 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\obj\Debug\BloggingApplication.UnitTest.pdb
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Net.Http.Formatting.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Net.Http.Formatting.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.Integration.Mvc.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.Integration.Mvc.xml

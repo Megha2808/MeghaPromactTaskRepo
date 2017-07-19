@@ -16,6 +16,8 @@ namespace BloggingApplication.core.App_Start
         public static void RegisterComponents()
         {
             var builder = new ContainerBuilder();
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(typeof(WebApiConfig).Assembly);
             builder.RegisterType<TagRepository>().As<ITagRepository>();
             builder.RegisterType<TagsController>();
             builder.RegisterType<ApplicationDbContext>().As<ApplicationDbContext>();

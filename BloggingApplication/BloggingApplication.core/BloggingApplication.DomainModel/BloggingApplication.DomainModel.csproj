@@ -125,7 +125,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\TagInitializeDb.cs" />
     <Compile Include="Migrations\201707061133321_InitialCreate.cs" />
     <Compile Include="Migrations\201707061133321_InitialCreate.Designer.cs">
       <DependentUpon>201707061133321_InitialCreate.cs</DependentUpon>

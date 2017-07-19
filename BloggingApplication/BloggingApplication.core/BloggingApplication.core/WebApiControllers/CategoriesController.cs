@@ -13,16 +13,16 @@ using BloggingApplication.Repository.CategoryRepository;
 
 namespace BloggingApplication.core.WebApiControllers
 {
-    public class CategoriesController : ApiController
+    public class CategoriesController : BaseAPIController
     {
         private ICategoryRepository _categoryRepository = new CategoryRepository();
 
         // GET: api/Categories
         [Route("api/Categories")]
-        public IHttpActionResult GetCategories()
+        public HttpResponseMessage GetCategories()
         {
             var data = _categoryRepository.GetAllCategory();
-            return Ok(data);
+            return ToJson(data);
             //return db.Categories;
         }
 
@@ -42,65 +42,37 @@ namespace BloggingApplication.core.WebApiControllers
 
         // PUT: api/Categories/5
         [ResponseType(typeof(void))]
-        [Route("api/PutCategory")]
-        public IHttpActionResult PutCategory(Category category)
+        [Route("api/PutCategory/{id}")]
+        public HttpResponseMessage PutCategory(int id, [FromBody]Category category)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            //  db.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                _categoryRepository.EditCategory(category);
-                // db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                throw;
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            _categoryRepository.EditCategory(category);
+            return ToJson(category);
         }
 
         // POST: api/Categories
         [ResponseType(typeof(Category))]
         [Route("api/addCategories")]
-        public IHttpActionResult PostCategory(Category category)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            else
-            {
+        public HttpResponseMessage Post([FromBody]Category category)
+        {            
                 _categoryRepository.AddCategory(category);
-                return Ok();
-            }
-           
-            // db.Categories.Add(category);
-            // db.SaveChanges();
-            //return CreatedAtRoute("DefaultApi", new { id = category.Id }, category);
-        }
-
+            return ToJson(category);
+        }           
+        
         // DELETE: api/Categories/5
         [ResponseType(typeof(Category))]
         [Route("api/DeleteCategory/{id}")]
-        public IHttpActionResult DeleteCategory(int id)
+        public HttpResponseMessage DeleteCategory(int id)
         {
             Category category = _categoryRepository.FindById(id);
             if (category == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound); ;
             }
 
             _categoryRepository.DeleteCategory(id);
             //  db.Categories.Remove(category);
             // db.SaveChanges();
-
-            return Ok(category);
+            return ToJson(id);
         }
 
         protected override void Dispose(bool disposing)

@@ -14,17 +14,16 @@ using BloggingApplication.Repository.PostRepository;
 
 namespace BloggingApplication.core.WebApiControllers
 {
-    public class PostsController : ApiController
+    public class PostsController : BaseAPIController
     {
         IPostRepository _postRepository = new PostRepository();
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Posts
         [Route("api/Posts")]
-        public IHttpActionResult GetPosts()
+        public HttpResponseMessage GetPosts()
         {
             var data = _postRepository.GetAllPost();
-            return Ok(data);
+            return ToJson(data);
             // return db.Posts;
         }
 
@@ -48,93 +47,56 @@ namespace BloggingApplication.core.WebApiControllers
         // PUT: api/Posts/5
         [ResponseType(typeof(void))]
         [Route("api/editpost/{id}")]
-        public IHttpActionResult PutPost(int id, Post post)
+        public HttpResponseMessage PutPost(int id, [FromBody]Post post)
         {
-            var userId = User.Identity.GetUserId();
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != post.Id)
-            {
-                return BadRequest();
-            }
-
-
-            _postRepository.EditPost(post,userId);
+            var userId = User.Identity.GetUserId();           
+            _postRepository.EditPost(post, userId);           
+            
             try
             {
-                
+
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PostExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return ToJson(post);
         }
 
         // POST: api/Posts
         [ResponseType(typeof(Post))]
         [Route("api/AddPosts")]
-        public IHttpActionResult PostPost(Post post)
+        public HttpResponseMessage PostPost(Post post)
         {
             var userId = User.Identity.GetUserId();
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            else
-            {
+            
                 _postRepository.AddPost(post, userId);
-                return Ok();
-            }
-           
+            return ToJson(post);
 
             //db.Posts.Add(post);
             //db.SaveChanges();
 
-           // return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
+            // return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
         }
 
         // DELETE: api/Posts/5
         [ResponseType(typeof(Post))]
         [Route("api/Deletepost/{id}")]
-        public IHttpActionResult DeletePost(int id)
+        public HttpResponseMessage DeletePost(int id)
         {
             Post post = _postRepository.GetById(id);
 
             if (post == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound); ;
             }
             _postRepository.DeletePost(id);
             //db.Posts.Remove(post);
             //db.SaveChanges();
 
-            return Ok(post);
+            return ToJson(id);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
-        private bool PostExists(int id)
-        {
-            return db.Posts.Count(e => e.Id == id) > 0;
-        }
     }
 }

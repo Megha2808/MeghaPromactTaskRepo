@@ -2,10 +2,10 @@
 <script src="../../../Scripts/jquery-1.10.2.js"></script>
 <div class='panel panel-primary'>
     <div class='panel-heading'>
-        Tag Management
+        Manage Tags
     </div>
     <div class='panel-body'>
-        <div class='table-responsive'>
+        <div class='table table-responsive'>
             <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="addTag()">Add</button></div>            
             <div *ngIf='tags && tags.length==0' class="alert alert-info" role="alert">No record found!</div>
             <table class='table table-striped' *ngIf='tags && tags.length'>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 <div>
                     <span>Name*</span>
-                    <input type="text" class="form-control" placeholder="First Name" formControlName="Name">
+                    <input type="text" class="form-control" placeholder="Name" formControlName="Name">
                 </div>               
             </div>
         </modal-body>

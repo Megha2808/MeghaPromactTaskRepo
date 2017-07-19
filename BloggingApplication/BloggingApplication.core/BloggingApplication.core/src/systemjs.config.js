@@ -26,7 +26,8 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-       'ng2-bs3-modal': 'npm:/ng2-bs3-modal'
+      'ng2-bs3-modal': 'npm:/ng2-bs3-modal',
+      'angular-2-multiple-selection': 'npm:angular-2-multiple-selection'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -42,7 +43,10 @@
         defaultExtension: 'js'
       },
       'ng2-bs3-modal':
-        { main: '/bundles/ng2-bs3-modal.js', defaultExtension: 'js' }
+        { main: '/bundles/ng2-bs3-modal.js', defaultExtension: 'js' },
+      'angular-2-multiple-selection': {
+          defaultExtension: 'ts'
+      }
     }
   });
 })(this);

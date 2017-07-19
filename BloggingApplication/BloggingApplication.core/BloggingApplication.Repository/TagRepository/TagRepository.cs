@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BloggingApplication.DomainModel.Models;
-using BloggingApplication.DomainModel.Context;
 
 namespace BloggingApplication.Repository.TagRepository
 {

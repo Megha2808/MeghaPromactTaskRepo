@@ -14,6 +14,7 @@ namespace BloggingApplication.core
     {
         protected void Application_Start()
         {
+
             AutofacConfig.RegisterComponents();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);//WEB API 1st

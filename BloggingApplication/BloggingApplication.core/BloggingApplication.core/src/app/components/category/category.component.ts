@@ -1,78 +1,78 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { TagService } from '../Service/tag.service';
+import { Service } from '../../Service/service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { ITag } from '../Models/tag';
-import { DBOperation } from '../Shared/enum';
+import { ICategory } from '../../Models/category';
+import { DBOperation } from '../../Shared/enum';
 import { Observable } from 'rxjs/Rx';
-import { Global } from '../Shared/global';
+import { Global } from '../../Shared/global';
 
 @Component({
 
-    templateUrl: 'app/components/tag.component.html'
+    templateUrl: 'app/components/category/category.component.html'
 
 })
 
-export class TagComponent implements OnInit {   
+export class CategoryComponent implements OnInit {
     @ViewChild('modal') modal: ModalComponent;
-    tags: ITag[];
-    tag: ITag;
+    categories: ICategory[];
+    category: ICategory;
     msg: string;
     indLoading: boolean = false;
-    tagFrm: FormGroup;
+    categoryFrm: FormGroup;
     dbops: DBOperation;
     modalTitle: string;
     modalBtnTitle: string;
 
-    constructor(private fb: FormBuilder, private _tagService: TagService) { }
+    constructor(private fb: FormBuilder, private _Service: Service) { }
 
     ngOnInit(): void {
 
-        this.tagFrm = this.fb.group({
+        this.categoryFrm = this.fb.group({
             Id: [''],
-            Name: ['', Validators.required]           
+            Name: ['', Validators.required]
         });
 
-        this.LoadTags();
+        this.LoadCategories();
     }
-    LoadTags(): void {
+    LoadCategories(): void {
         this.indLoading = true;
-        this._tagService.get(Global.BASE_API_ENDPOINT + 'Tags/')
-            .subscribe(tags => { this.tags = tags; this.indLoading = false; },
+        this._Service.get(Global.BASE_API_ENDPOINT + 'Categories/')
+            .subscribe(categories => { this.categories = categories; this.indLoading = false; },
             error => this.msg = <any>error);
     }
 
-    addTag() {
+    addCategory() {
         this.dbops = DBOperation.create;
         this.SetControlsState(true);
-        this.modalTitle = 'Add New Tag';
+        this.modalTitle = 'Add New Category';
         this.modalBtnTitle = 'Add';
-        this.tagFrm.reset();
+        this.categoryFrm.reset();
         this.modal.open();
     }
 
-    editTag(id: number) {
+    editCategory(id: number) {
         this.dbops = DBOperation.update;
         this.SetControlsState(true);
-        this.modalTitle = 'Edit Tag';
+        this.modalTitle = 'Edit Category';
         this.modalBtnTitle = 'Update';
-        this.tag = this.tags.filter(x => x.Id === id)[0];
-        this.tagFrm.setValue(this.tag);
+        this.category = this.categories.filter(x => x.Id === id)[0];
+        this.categoryFrm.setValue(this.category);
         this.modal.open();
     }
 
-    deleteTag(id: number) {
+    deleteCategory(id: number) {
         this.dbops = DBOperation.delete;
         this.SetControlsState(false);
         this.modalTitle = 'Confirm to Delete?';
         this.modalBtnTitle = 'Delete';
-        this.tag = this.tags.filter(x => x.Id === id)[0];
-        this.tagFrm.setValue(this.tag);
+        this.category = this.categories.filter(x => x.Id === id)[0];
+        this.categoryFrm.setValue(this.category);
         this.modal.open();
     }
 
     SetControlsState(isEnable: boolean) {
-        isEnable ? this.tagFrm.enable() : this.tagFrm.disable();
+        isEnable ? this.categoryFrm.enable() : this.categoryFrm.disable();
     }
 
     onSubmit(formData: any) {
@@ -80,16 +80,16 @@ export class TagComponent implements OnInit {
 
         switch (this.dbops) {
             case DBOperation.create:
-                this._tagService.post(Global.BASE_API_ENDPOINT + 'AddTags/', formData._value).subscribe(
+                this._Service.post(Global.BASE_API_ENDPOINT + 'addCategories/', formData._value).subscribe(
                     data => {
                         if (data === 1) // Success
                         {
                             this.msg = "Data successfully added.";
-                            this.LoadTags();
+                            this.LoadCategories();
                         }
                         else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!";
-                            this.LoadTags();
+                            this.LoadCategories();
                         }
 
                         this.modal.dismiss();
@@ -100,16 +100,16 @@ export class TagComponent implements OnInit {
                 );
                 break;
             case DBOperation.update:
-                this._tagService.put(Global.BASE_API_ENDPOINT + 'PutTag/', formData._value.Id, formData._value).subscribe(
+                this._Service.put(Global.BASE_API_ENDPOINT + 'PutCategory/', formData._value.Id, formData._value).subscribe(
                     data => {
                         if (data === 1) // Success
                         {
                             this.msg = "Data successfully updated.";
-                            this.LoadTags();
+                            this.LoadCategories();
                         }
                         else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!";
-                            this.LoadTags();
+                            this.LoadCategories();
                         }
 
                         this.modal.dismiss();
@@ -120,16 +120,16 @@ export class TagComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._tagService.delete(Global.BASE_API_ENDPOINT + 'DeleteTag/', formData._value.Id).subscribe(
+                this._Service.delete(Global.BASE_API_ENDPOINT + 'DeleteCategory/', formData._value.Id).subscribe(
                     data => {
                         if (data == 1) // Success
                         {
                             this.msg = "Data successfully deleted.";
-                            this.LoadTags();
+                            this.LoadCategories();
                         }
                         else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!";
-                            this.LoadTags();
+                            this.LoadCategories();
                         }
 
                         this.modal.dismiss();

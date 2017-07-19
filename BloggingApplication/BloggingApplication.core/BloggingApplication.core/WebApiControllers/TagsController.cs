@@ -16,7 +16,7 @@ namespace BloggingApplication.core.WebApiControllers
     public class TagsController : BaseAPIController
     {
 
-         ITagRepository _tagRepository =new TagRepository();
+         ITagRepository _tagRepository = new TagRepository();
 
         //public TagsController(ITagRepository repository)
         //{
@@ -119,7 +119,7 @@ namespace BloggingApplication.core.WebApiControllers
             Tag tag = _tagRepository.FindById(id);
             if (tag == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound); ;
+                return Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
             _tagRepository.DeleteTag(id);

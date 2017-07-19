@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var tag_service_1 = require("../Service/tag.service");
+var service_1 = require("../Service/service");
 var forms_1 = require("@angular/forms");
 var ng2_bs3_modal_1 = require("ng2-bs3-modal/ng2-bs3-modal");
 var enum_1 = require("../Shared/enum");
@@ -123,7 +123,7 @@ TagComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/tag.component.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, tag_service_1.TagService])
+    __metadata("design:paramtypes", [forms_1.FormBuilder, service_1.Service])
 ], TagComponent);
 exports.TagComponent = TagComponent;
 //# sourceMappingURL=tag.component.js.map
