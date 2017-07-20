@@ -28,6 +28,7 @@ namespace BloggingApplication.Repository.PostRepository
                                 where c.Id == x.Category_Id
                                 select c.Name).FirstOrDefault(),
                 Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                Tags = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
                 partialcontent = x.Content.Length >= 240
                     ? x.Content.Substring(0, 240)
                     : x.Content,
@@ -70,6 +71,8 @@ namespace BloggingApplication.Repository.PostRepository
             p.Isdelete = false;
             p.Category_Id = model.Category_Id;
             p.Modified = DateTime.Now.Date;
+            p.Title = model.Title;
+            p.Content = model.Content;
             db.Entry(p).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }

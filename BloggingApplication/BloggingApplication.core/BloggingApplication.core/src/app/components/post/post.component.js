@@ -20,16 +20,6 @@ var PostComponent = (function () {
         this._Service = _Service;
         this.indLoading = false;
     }
-    PostComponent.prototype.ngOnInit = function () {
-        this.postFrm = this.fb.group({
-            Id: [''],
-            Title: ['', forms_1.Validators.required],
-            Content: ['', forms_1.Validators.required],
-            Tags: [this.tags[1]],
-            Category_Id: [''],
-        });
-        this.LoadPost();
-    };
     PostComponent.prototype.LoadPost = function () {
         var _this = this;
         this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Categories/')
@@ -39,6 +29,25 @@ var PostComponent = (function () {
             .subscribe(function (postes) { _this.posts = postes; _this.indLoading = false; }, function (error) { return _this.msg = error; });
         this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Tags/')
             .subscribe(function (tags) { _this.tags = tags; _this.indLoading = false; }, function (error) { return _this.msg = error; });
+    };
+    PostComponent.prototype.ngOnInit = function () {
+        this.LoadPost();
+        this.postFrm = this.fb.group({
+            Id: [''],
+            Title: ['', forms_1.Validators.required],
+            Content: ['', forms_1.Validators.required],
+            Category_Id: ['', forms_1.Validators.required],
+            Tags: ['', forms_1.Validators.required],
+            username: [''],
+            Categoryname: [''],
+            Tagname: [''],
+            partialcontent: [''],
+            createdOn: ['']
+        });
+    };
+    PostComponent.prototype.onChange = function () {
+        console.log(this.Tags);
+        alert("changes");
     };
     //LoadPost(): void {
     //    this.indLoading = true;
@@ -51,8 +60,6 @@ var PostComponent = (function () {
         this.SetControlsState(true);
         this.modalTitle = 'Add New Post';
         this.modalBtnTitle = 'Add';
-        this.Category_Id = this.categories.filter[0];
-        this.Tags = this.Tags;
         this.postFrm.reset();
         this.modal.open();
     };

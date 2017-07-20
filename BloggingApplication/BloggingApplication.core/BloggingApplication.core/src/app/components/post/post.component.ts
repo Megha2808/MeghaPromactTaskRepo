@@ -6,46 +6,31 @@ import { ICategory } from '../../Models/category';
 import { IPost } from '../../Models/post';
 import { ITag } from '../../Models/tag';
 import { DBOperation } from '../../Shared/enum';
-import { Observable } from 'rxjs/Rx';
 import { Global } from '../../Shared/global';
 
 @Component({
-
     templateUrl: 'app/components/post/post.component.html'
-
 })
 
-export class PostComponent implements OnInit {
-   
+export class PostComponent implements OnInit {   
     @ViewChild('modal') modal: ModalComponent;
     categories: ICategory[];
     Category_Id: ICategory;
     posts: IPost[];
     post: IPost;
-    tags: ITag[];
-    Tags: any[];
+    public tags: ITag[];
+    public Tags: any[];
     msg: string;
     indLoading: boolean = false;
     postFrm: FormGroup;
     dbops: DBOperation;
     modalTitle: string;
-    modalBtnTitle: string;   
+    modalBtnTitle: string;
+       
     constructor(private fb: FormBuilder, private _Service: Service) { }
 
-    ngOnInit(): void {
-        this.LoadPost();
-        this.postFrm = this.fb.group({
-            Id: [''],
-            Title: ['', Validators.required],
-            Content: ['', Validators.required],
-            Tags: [''],
-            Category_Id: [''],
-        });
-
-       
-    }
     LoadPost() {
-        
+
         this._Service.get(Global.BASE_API_ENDPOINT + 'Categories/')
             .subscribe(categories => { this.categories = categories; this.indLoading = false; },
             error => this.msg = <any>error);
@@ -55,21 +40,33 @@ export class PostComponent implements OnInit {
             error => this.msg = <any>error);
         this._Service.get(Global.BASE_API_ENDPOINT + 'Tags/')
             .subscribe(tags => { this.tags = tags; this.indLoading = false; },
-            error => this.msg = <any>error);    
+            error => this.msg = <any>error);
     }
-    //LoadPost(): void {
-    //    this.indLoading = true;
-    //    this._Service.get(Global.BASE_API_ENDPOINT + 'Posts/')
-    //        .subscribe(postes => { this.posts = postes; this.indLoading = false; },
-    //        error => this.msg = <any>error);
-    //}
+    ngOnInit(): void {
+        this.LoadPost();
+        this.postFrm = this.fb.group({
+            Id: [''],
+            Title: ['', Validators.required],
+            Content: ['', Validators.required],
+            Category_Id: ['', Validators.required],
+            Tags: ['',Validators.required],
+            username: [''],
+            Categoryname: [''],
+            Tagname: [''],
+            partialcontent: [''],
+            createdOn:['']                
+        });                                   
+    }
+    onChange() {
+        console.log(this.Tags);
+        alert("changes");
+    }    
 
     addPost() {
         this.dbops = DBOperation.create;
         this.SetControlsState(true);
         this.modalTitle = 'Add New Post';
-        this.modalBtnTitle = 'Add';       
-        this.Category_Id = this.categories.filter[0];
+        this.modalBtnTitle = 'Add';                      
         this.postFrm.reset();
         this.modal.open();
     }
@@ -102,6 +99,7 @@ export class PostComponent implements OnInit {
         this.msg = "";
         switch (this.dbops) {
             case DBOperation.create:
+                
                 this._Service.post(Global.BASE_API_ENDPOINT + 'AddPosts/', formData._value).subscribe(
                     data => {
                         if (data === 1) // Success

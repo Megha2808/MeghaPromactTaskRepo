@@ -1,6 +1,6 @@
 ﻿<script src="../../../Scripts/bootstrap.js"></script>
 <script src="../../../Scripts/jquery-1.10.2.js"></script>
-<div class='panel panel-primary'>
+<div class='panel panel-primary' style="width:800px">
     <div class='panel-heading'>
         Manage Post
     </div>
@@ -10,7 +10,6 @@
             <div *ngIf='posts && posts.length==0' class="alert alert-info" role="alert">No record found!</div>
             <table class='table table-striped' *ngIf='posts && posts.length'>
                 <thead>
-
                     <tr>
                         <th width="25px">
                             Title
@@ -71,42 +70,43 @@
     </div>
 </div>
 
-<modal #modal>
-    <form novalidate (ngSubmit)="onSubmit(postFrm)" [formGroup]="postFrm">
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">{{modalTitle}}</h4>
-        </modal-header>
-        <modal-body>
-            <div class="form-group">
-                <div>
-                    <span>Title*</span>
-                    <input type="text" class="form-control" placeholder="Title" formControlName="Title">
-                    <span>Content*</span>
-                    <input type="text" class="form-control" placeholder="Content" formControlName="Content">
-                    <span>Category</span>
-                    <select [(ngModel)]="Category_Id" formControlName="Category_Id">
-                        <option *ngFor="let c of categories"
-                                [ngValue]="c.Id"
-                                [selected]="c.Id">
-                            {{c.Name}}
-                        </option>
-                    </select>
-                    <span>Tags</span>
-                    <select multiple [(ngModel)]="Tags" formControlName="Tags">
-                        <option *ngFor="let c of tags"
-                                [ngValue]="c.Id"
-                                [selected]="c">
-                            {{c.Name}}
-                        </option>
-                    </select>
+    <modal #modal>
+        <form novalidate (ngSubmit)="onSubmit(postFrm)" [formGroup]="postFrm">
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">{{modalTitle}}</h4>
+            </modal-header>
+            <modal-body>
+                <div class="form-group">
+                    <div>
+                        <span>Title*</span>
+                        <input type="text" class="form-control" placeholder="Title" formControlName="Title"><br /><br />
+                        <span>Content*</span>
+                        <input type="text" class="form-control" placeholder="Content" formControlName="Content"><br /><br />
+                        <span>Category</span>
+                        <select [(ngModel)]="Category_Id" formControlName="Category_Id">
+                            <option *ngFor="let c of categories"
+                                    [ngValue]="c.Id"
+                                    [selected]="c">
+                                {{c.Name}}
+                            </option>
+                        </select><br /><br />
+                        <span>Tags</span>
+                        <select multiple [(ngModel)]="Tags" formControlName="Tags">
+                            <option *ngFor="let c of tags"
+                                    [ngValue]="c"
+                                    [selected]="c"
+                                    (Change)="onChange()">
+                                {{c.Name}}
+                            </option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </modal-body>
-        <modal-footer>
-            <div>
-                <a class="btn btn-default" (click)="modal.dismiss()">Cancel</a>
-                <button type="submit" [disabled]="postFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
-            </div>
-        </modal-footer>
-    </form>
-</modal>
+            </modal-body>
+            <modal-footer>
+                <div>
+                    <a class="btn btn-default" (click)="modal.dismiss()">Cancel</a>
+                    <button type="submit" [disabled]="postFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+                </div>
+            </modal-footer>
+        </form>
+    </modal>

@@ -71,7 +71,7 @@ namespace BloggingApplication.core.WebApiControllers
             var userId = User.Identity.GetUserId();
             
                 _postRepository.AddPost(post, userId);
-            return ToJson(post);
+            return ToJson(userId);
 
             //db.Posts.Add(post);
             //db.SaveChanges();

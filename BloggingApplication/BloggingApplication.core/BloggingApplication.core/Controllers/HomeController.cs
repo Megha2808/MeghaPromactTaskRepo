@@ -23,6 +23,10 @@ namespace BloggingApplication.core.Controllers
         }
         public ActionResult Admin()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             return View();
         }
     }

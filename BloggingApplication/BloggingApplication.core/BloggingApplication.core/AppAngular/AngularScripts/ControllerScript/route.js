@@ -5,15 +5,15 @@ var MyApp = angular.module("MyApp", ['ngRoute', 'Service', 'angularUtils.directi
 MyApp.config(['$routeProvider',
     function ($routeProvider) {
         //$routeProvider.hashPrefix('');
-        $routeProvider.when('/category', {
+        $routeProvider.when('/Categories', {
             templateUrl: '/AppAngular/Html/DisplayCategory.html',
             controller: 'DisplayCategoryController'
         }).
-        when('/tag', {
+        when('/Tags', {
             templateUrl: '/AppAngular/Html/DisplayTags.html',
             controller: 'DisplayTagController'
         }).
-        when('/post', {
+        when('/Posts', {
             templateUrl: '/AppAngular/Html/DisplayPost.html',
             controller: 'DisplayPostController'
         }).
