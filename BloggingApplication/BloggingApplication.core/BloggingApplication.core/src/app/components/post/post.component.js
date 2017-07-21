@@ -49,12 +49,6 @@ var PostComponent = (function () {
         console.log(this.Tags);
         alert("changes");
     };
-    //LoadPost(): void {
-    //    this.indLoading = true;
-    //    this._Service.get(Global.BASE_API_ENDPOINT + 'Posts/')
-    //        .subscribe(postes => { this.posts = postes; this.indLoading = false; },
-    //        error => this.msg = <any>error);
-    //}
     PostComponent.prototype.addPost = function () {
         this.dbops = enum_1.DBOperation.create;
         this.SetControlsState(true);

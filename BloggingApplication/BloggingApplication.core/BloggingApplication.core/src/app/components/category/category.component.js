@@ -98,7 +98,7 @@ var CategoryComponent = (function () {
                 break;
             case enum_1.DBOperation.delete:
                 this._Service.delete(global_1.Global.BASE_API_ENDPOINT + 'DeleteCategory/', formData._value.Id).subscribe(function (data) {
-                    if (data == 1) {
+                    if (data === 1) {
                         _this.msg = "Data successfully deleted.";
                         _this.LoadCategories();
                     }
@@ -121,7 +121,7 @@ __decorate([
 ], CategoryComponent.prototype, "modal", void 0);
 CategoryComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/components/category/category.component.html'
+        templateUrl: 'app/components/category/category.component.html',
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder, service_1.Service])
 ], CategoryComponent);

@@ -13,22 +13,9 @@ var AppComponent = (function () {
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: "user-app",
-        template: "\n                <div>\n                        <div id=\"navbar\" class=\"col-sm-3\" style=\"margin-top:20px; float:left;height:700px;\">\n                            <ul class=\"nav nav-pills nav-stacked\">\n                                <li><a [routerLink]=\"['Home/Admin/home']\">Home</a></li>\n                                <li><a [routerLink]=\"['Home/Admin/category']\">Manage category</a></li>                                \n                                <li><a [routerLink]=\"['Home/Admin/tag']\">Manage Tag</a></li>\n                                <li><a [routerLink]=\"['Home/Admin/post']\">Manage Post</a></li> \n                                           \n                            </ul>\n                        </div>       \n                        <div id=\"Content\" class=\"col-md-8\" style=\"border-left:solid; text-align:justify; float:right;margin-top:20px\">\n                            <router-outlet></router-outlet>\n                        </div>\n                </div>\n                 \n            "
+        selector: "my-app",
+        template: "                    \n                      \n               <router-outlet></router-outlet>\n                                                    \n              "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
-//  <div>
-//     <nav class='navbar navbar-inverse'>
-//          <div class='container-fluid'>
-//            <ul class='nav navbar-nav'>
-//              <li><a [routerLink]="['Home/Admin/home']">Home</a></li>
-//               <li><a [routerLink]="['Home/Admin/tag']">Tags Management</a></li>                      
-//               </ul>
-//         </div>
-//    </nav>    
-// <div class='container'>
-//   <router-outlet></router-outlet>
-// </div>
-// </div>      
 //# sourceMappingURL=app.component.js.map

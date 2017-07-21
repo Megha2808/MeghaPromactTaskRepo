@@ -98,7 +98,7 @@ var TagComponent = (function () {
                 break;
             case enum_1.DBOperation.delete:
                 this._tagService.delete(global_1.Global.BASE_API_ENDPOINT + 'DeleteTag/', formData._value.Id).subscribe(function (data) {
-                    if (data == 1) {
+                    if (data === 1) {
                         _this.msg = "Data successfully deleted.";
                         _this.LoadTags();
                     }

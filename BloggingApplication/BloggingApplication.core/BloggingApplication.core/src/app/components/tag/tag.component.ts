@@ -4,14 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ITag } from '../../Models/tag';
 import { DBOperation } from '../../Shared/enum';
-import { Observable } from 'rxjs/Rx';
 import { Global } from '../../Shared/global';
 
 @Component({
     templateUrl: 'app/components/tag/tag.component.html'
 })
 
-export class TagComponent implements OnInit {   
+export class TagComponent implements OnInit {
     @ViewChild('modal') modal: ModalComponent;
     tags: ITag[];
     tag: ITag;
@@ -28,7 +27,7 @@ export class TagComponent implements OnInit {
 
         this.tagFrm = this.fb.group({
             Id: [''],
-            Name: ['', Validators.required]           
+            Name: ['', Validators.required]
         });
 
         this.LoadTags();
@@ -120,7 +119,7 @@ export class TagComponent implements OnInit {
             case DBOperation.delete:
                 this._tagService.delete(Global.BASE_API_ENDPOINT + 'DeleteTag/', formData._value.Id).subscribe(
                     data => {
-                        if (data == 1) // Success
+                        if (data === 1) // Success
                         {
                             this.msg = "Data successfully deleted.";
                             this.LoadTags();

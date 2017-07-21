@@ -4,12 +4,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ICategory } from '../../Models/category';
 import { DBOperation } from '../../Shared/enum';
-import { Observable } from 'rxjs/Rx';
 import { Global } from '../../Shared/global';
 
 @Component({
 
-    templateUrl: 'app/components/category/category.component.html'
+    templateUrl: 'app/components/category/category.component.html',
+   
 
 })
 
@@ -122,7 +122,7 @@ export class CategoryComponent implements OnInit {
             case DBOperation.delete:
                 this._Service.delete(Global.BASE_API_ENDPOINT + 'DeleteCategory/', formData._value.Id).subscribe(
                     data => {
-                        if (data == 1) // Success
+                        if (data === 1) // Success
                         {
                             this.msg = "Data successfully deleted.";
                             this.LoadCategories();

@@ -17,7 +17,7 @@ namespace BloggingApplication.core.Controllers
             TempData.Keep("UserId");
             return View();
         }
-        public ActionResult Tag()
+        public ActionResult Blog()
         {
             return View();
         }

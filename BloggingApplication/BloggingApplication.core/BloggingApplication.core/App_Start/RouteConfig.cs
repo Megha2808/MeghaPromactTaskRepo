@@ -18,7 +18,13 @@ namespace BloggingApplication.core
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            
+
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                            name: "anyother",
+                            url: "{*anything}",
+                            defaults: new { controller = "Home", action = "Blog", id = UrlParameter.Optional }
+                        );
         }
     }
 }

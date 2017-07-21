@@ -1048,6 +1048,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="src\app\components\Blogs\blogs.component.html" />
+    <Content Include="src\app\components\Blogs\Index.Component.html" />
     <Content Include="src\app\components\category\category.component.html" />
     <Content Include="src\app\components\post\post.component.html" />
     <Content Include="src\app\components\tag\tag.component.html" />
@@ -1096,6 +1098,7 @@
     <Content Include="tslint.json" />
     <Content Include="Views\Home\Tag.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1124,6 +1127,11 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\app.routing.ts" />
+    <TypeScriptCompile Include="src\app\components\Blogs\blog.category.component.ts" />
+    <TypeScriptCompile Include="src\app\components\Blogs\blog.component.ts" />
+    <TypeScriptCompile Include="src\app\components\Blogs\blog.tags.component.ts" />
+    <TypeScriptCompile Include="src\app\components\Blogs\BlogByCategory.component.ts" />
+    <TypeScriptCompile Include="src\app\components\Blogs\Index.Component.ts" />
     <TypeScriptCompile Include="src\app\components\category\category.component.ts" />
     <TypeScriptCompile Include="src\app\components\home.component.ts" />
     <TypeScriptCompile Include="src\app\components\post\post.component.ts" />

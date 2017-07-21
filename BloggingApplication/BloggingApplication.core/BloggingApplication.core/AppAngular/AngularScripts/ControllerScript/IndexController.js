@@ -84,7 +84,7 @@ MyApp.controller("IndexController", function ($scope ,$routeParams, Api) {
     $scope.BackToIndex = function () {
         window.location.href = '/Home/Index';
         $scope.PostDetail.Id = '';
-    }
+    };
 });
 
 MyApp.controller("GetPostByTagController", function ($scope, $routeParams, Api) {
@@ -103,7 +103,7 @@ MyApp.controller("GetPostByTagController", function ($scope, $routeParams, Api) 
             function () {
                 alert("Fail..");
             });
-        };
+        }
         $scope.PostDetail = {
             Id: '',
             Title: '',
@@ -130,7 +130,7 @@ MyApp.controller("GetPostByTagController", function ($scope, $routeParams, Api) 
         $scope.BackToIndex = function () {
             window.location.href = '/Home/Index';
             $scope.PostDetail.Id = '';
-        }
+        };
 
 });
 
@@ -149,7 +149,7 @@ MyApp.controller("GetPostByCategoryController", function ($scope, $routeParams, 
         function () {
             alert("Fail..");
         });
-    };
+    }
 
     $scope.PostDetail = {
         Id: '',
@@ -176,6 +176,6 @@ MyApp.controller("GetPostByCategoryController", function ($scope, $routeParams, 
     $scope.BackToIndex = function () {
         window.location.href = '/Home/Index';
         $scope.PostDetail.Id = '';
-    }
+    };
 
 });

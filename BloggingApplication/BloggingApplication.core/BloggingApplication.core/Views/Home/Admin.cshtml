@@ -11,20 +11,32 @@
     <script src="/node_modules/zone.js/dist/zone.js"></script>
     <script src="/node_modules/systemjs/dist/system.src.js"></script>
     <script src="~/src/systemjs.config.js"></script>
+
     <script>
         System.import('/src/app/main.js')
             .catch(function (err) { console.error(err); });
     </script>
     <title>Admin </title>
     <meta charset="UTF-8">
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!--<my-app>Loading AppComponent content here ...</my-app>-->
-    <user-app>Loading…<user-app>
+    <div>
+        <div id="navbar" class="col-sm-3" style="margin-top:20px; float:left;height:700px;">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="/Home/Admin/category">Manage category</a></li>
+                <li><a href="/Home/Admin/tag">Manage Tag</a></li>
+                <li><a href='/Home/Admin/post'>Manage Post</a></li>
+            </ul>
+        </div>
+        <div id="Content" class="col-md-8" style="border-left:solid; text-align:justify; float:right;margin-top:20px">
+            <!--<my-app>Loading AppComponent content here ...</my-app>-->
+            <my-app>Loading…<my-app>
+        </div>
+    </div>
 </body>
 </html>
 <script src="../Scripts/jquery-1.10.2.js"></script>

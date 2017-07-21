@@ -134,7 +134,7 @@ MyApp.controller("AddPostController", function ($scope, Api) {
 
     $scope.cancel = function () {
         window.location.href = '/Home/Index';
-    }
+    };
 
     // alert("in add post con");
     $scope.AddNewPost = function () {

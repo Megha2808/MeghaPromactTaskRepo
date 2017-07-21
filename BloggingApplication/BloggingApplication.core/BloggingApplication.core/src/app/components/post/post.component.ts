@@ -12,7 +12,7 @@ import { Global } from '../../Shared/global';
     templateUrl: 'app/components/post/post.component.html'
 })
 
-export class PostComponent implements OnInit {   
+export class PostComponent implements OnInit {
     @ViewChild('modal') modal: ModalComponent;
     categories: ICategory[];
     Category_Id: ICategory;
@@ -26,7 +26,7 @@ export class PostComponent implements OnInit {
     dbops: DBOperation;
     modalTitle: string;
     modalBtnTitle: string;
-       
+
     constructor(private fb: FormBuilder, private _Service: Service) { }
 
     LoadPost() {
@@ -49,24 +49,24 @@ export class PostComponent implements OnInit {
             Title: ['', Validators.required],
             Content: ['', Validators.required],
             Category_Id: ['', Validators.required],
-            Tags: ['',Validators.required],
+            Tags: ['', Validators.required],
             username: [''],
             Categoryname: [''],
             Tagname: [''],
             partialcontent: [''],
-            createdOn:['']                
-        });                                   
+            createdOn: ['']
+        });
     }
     onChange() {
         console.log(this.Tags);
         alert("changes");
-    }    
+    }
 
     addPost() {
         this.dbops = DBOperation.create;
         this.SetControlsState(true);
         this.modalTitle = 'Add New Post';
-        this.modalBtnTitle = 'Add';                      
+        this.modalBtnTitle = 'Add';
         this.postFrm.reset();
         this.modal.open();
     }
@@ -99,7 +99,7 @@ export class PostComponent implements OnInit {
         this.msg = "";
         switch (this.dbops) {
             case DBOperation.create:
-                
+
                 this._Service.post(Global.BASE_API_ENDPOINT + 'AddPosts/', formData._value).subscribe(
                     data => {
                         if (data === 1) // Success
@@ -121,8 +121,7 @@ export class PostComponent implements OnInit {
             case DBOperation.update:
                 this._Service.put(Global.BASE_API_ENDPOINT + 'editpost/', formData._value.Id, formData._value).subscribe(
                     data => {
-                        if (data === 1)
-                        {
+                        if (data === 1) {
                             this.msg = "Data successfully updated.";
                             this.LoadPost();
                         }
