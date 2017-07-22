@@ -16,25 +16,26 @@ namespace BloggingApplication.Repository.PostRepository
         #region Get Posts
         public IQueryable GetAllPost()
         {
-            var data = db.Posts.Where(x => x.Isdelete == false).Select(x => new
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Category_Id = x.Category_Id,
-                username = (from u in db.Users
-                            where u.Id == x.Users_Id
-                            select u.UserName).FirstOrDefault(),
-                Categoryname = (from c in db.Categories
-                                where c.Id == x.Category_Id
-                                select c.Name).FirstOrDefault(),
-                Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
-                Tags = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
-                partialcontent = x.Content.Length >= 240
+            var data = db.Posts.Where(x => x.Isdelete == false)
+                .Select(x => new
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Category_Id = x.Category_Id,
+                    username = db.Users.Where(y => y.Id == x.Users_Id)
+                                    .Select(y => y.UserName)
+                                    .FirstOrDefault(),
+                    Categoryname = db.Categories.Where(c => c.Id == x.Category_Id)
+                                    .Select(y => y.Name)
+                                    .FirstOrDefault(),
+                    Tagname = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                    Tags = x.Tags.Select(m => new { Id = m.Id, Name = m.Name }).ToList(),
+                    partialcontent = x.Content.Length >= 240
                     ? x.Content.Substring(0, 240)
                     : x.Content,
-                createdOn = x.PostedOn,
-                Content = x.Content,
-            }).OrderByDescending(x => x.createdOn);
+                    createdOn = x.PostedOn,
+                    Content = x.Content,
+                }).OrderByDescending(x => x.createdOn);
             return data;
         }
         #endregion Get Post
@@ -54,25 +55,41 @@ namespace BloggingApplication.Repository.PostRepository
             //To avoid adding New tags in database...
             foreach (var assignedtag in p.Tags)
             {
-                db.Entry(assignedtag).State = EntityState.Unchanged;
+              var tagstoadd = db.Tags.Where(x=>x.Id==assignedtag.Id).FirstOrDefault();
+                post.Tags.Add(tagstoadd);
+                //db.Entry(assignedtag).State = EntityState.Unchanged;
             }
 
-            post.Tags = p.Tags;
+            //post.Tags = p.Tags;
             db.Posts.Add(post);
             db.SaveChanges();
-
         }
         #endregion Add Post
 
         #region update Post
         public void EditPost(Post model, string userid)
         {
-            Post p = db.Posts.Include(x => x.Tags).SingleOrDefault(x => x.Id == model.Id);
+            Post p = db.Posts.SingleOrDefault(x => x.Id == model.Id);
             p.Isdelete = false;
             p.Category_Id = model.Category_Id;
             p.Modified = DateTime.Now.Date;
             p.Title = model.Title;
             p.Content = model.Content;
+
+            var count = p.Tags.Count;
+            for (var i = 0; i <count; i++)
+            {                              
+                p.Tags.Remove(p.Tags.ElementAt(0));               
+            }
+
+            foreach (var assignedtag in model.Tags)
+            {
+
+                db.Entry(assignedtag).State = EntityState.Modified;
+            }
+
+
+            p.Tags = model.Tags;
             db.Entry(p).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }

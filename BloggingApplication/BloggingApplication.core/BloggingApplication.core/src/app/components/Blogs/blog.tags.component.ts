@@ -4,12 +4,12 @@ import { ITag } from '../../Models/tag';
 import { Global } from '../../Shared/global';
 
 @Component({
-    selector: 'display-tags',
+    selector: '',
     template: `<div *ngIf='tags && tags.length==0' class="alert alert-info" role="alert">No record found!</div>
                     <div *ngIf='tags && tags.length'>
                         <div *ngFor="let t of tags">
                             <ul>
-                                <li><a href="/Home/Blog/Tag/{{t.Name}}/{{t.Id}}">{{t.Name}}</a></li>
+                                <li><a [routerLink]="['/Home/Blog/Tag/',t.Name ,t.Id]">{{t.Name}}</a></li>
                             </ul>
                         </div>
                     </div>

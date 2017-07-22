@@ -15,7 +15,8 @@ const appRoutes: Routes = [
     { path: 'Home/Admin/category', component: CategoryComponent },
     { path: 'Home/Admin/post', component: PostComponent },
     { path: 'Home/Blog', component: IndexBlogComponent },
-    { path: 'Home/Blog/Category/:id', component: BlogComponent }
+    { path: 'Home/Blog/Category/:categoryName/:id', component: IndexBlogComponent },
+    { path: 'Home/Blog/Tag/:tagName/:id', component: IndexBlogComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

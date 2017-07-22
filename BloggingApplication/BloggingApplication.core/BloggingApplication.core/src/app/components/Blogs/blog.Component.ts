@@ -5,7 +5,7 @@ import { Global } from '../../Shared/global';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'display-blog',
+    selector: '',
     template: `
                     <div id="blogpagination">
                         <div *ngIf='posts && posts.length==0' class="alert alert-info" role="alert">No record found!</div>
@@ -28,17 +28,32 @@ import { ActivatedRoute } from '@angular/router';
 export class BlogComponent implements OnInit {
     posts: IPost[];
     msg: string;
-    id: number;
+    categoryid: number;
+    tagid: number;
     private sub: any;
 
     constructor(private _Service: Service, private route: ActivatedRoute) { }
 
-    ngOnInit(): void {
-        this.id = null;
-        this.route.params.subscribe(params => {
-            this.id = +params["id"];
-        });
+    ngOnInit(): void {           
         this.Loadposts();
+        this.route.params.subscribe((params: any) => {
+            if (params.id) {
+                alert("has id");
+                if (params.categoryName) {
+                    alert("has categoryname");
+                    this.categoryid = +params["id"];
+                    alert(this.categoryid);
+                    this.LoadpostByCategory();
+                }
+                else if (params.tagName) {
+                    this.tagid = +params["id"];
+                    alert("has tagname");
+                    alert(this.tagid);
+                }
+            } else {
+                alert("noo id");
+            }
+        });
     }
 
     Loadposts(): void {
@@ -48,7 +63,7 @@ export class BlogComponent implements OnInit {
     }
 
     LoadpostByCategory(): void {
-        this._Service.get(Global.BASE_API_ENDPOINT + 'Posts/categoryId/' + this.id)
+        this._Service.get(Global.BASE_API_ENDPOINT + 'Posts/categoryId/' + this.categoryid)
             .subscribe(posts => { this.posts = posts; },
             error => this.msg = <any>error);
     }

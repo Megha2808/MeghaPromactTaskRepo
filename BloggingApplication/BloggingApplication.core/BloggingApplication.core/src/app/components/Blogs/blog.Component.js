@@ -19,11 +19,26 @@ var BlogComponent = (function () {
     }
     BlogComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.id = null;
-        this.route.params.subscribe(function (params) {
-            _this.id = +params["id"];
-        });
         this.Loadposts();
+        this.route.params.subscribe(function (params) {
+            if (params.id) {
+                alert("has id");
+                if (params.categoryName) {
+                    alert("has categoryname");
+                    _this.categoryid = +params["id"];
+                    alert(_this.categoryid);
+                    _this.LoadpostByCategory();
+                }
+                else if (params.tagName) {
+                    _this.tagid = +params["id"];
+                    alert("has tagname");
+                    alert(_this.tagid);
+                }
+            }
+            else {
+                alert("noo id");
+            }
+        });
     };
     BlogComponent.prototype.Loadposts = function () {
         var _this = this;
@@ -32,14 +47,14 @@ var BlogComponent = (function () {
     };
     BlogComponent.prototype.LoadpostByCategory = function () {
         var _this = this;
-        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Posts/categoryId/' + this.id)
+        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Posts/categoryId/' + this.categoryid)
             .subscribe(function (posts) { _this.posts = posts; }, function (error) { return _this.msg = error; });
     };
     return BlogComponent;
 }());
 BlogComponent = __decorate([
     core_1.Component({
-        selector: 'display-blog',
+        selector: '',
         template: "\n                    <div id=\"blogpagination\">\n                        <div *ngIf='posts && posts.length==0' class=\"alert alert-info\" role=\"alert\">No record found!</div>\n                        <div *ngIf='posts && posts.length'>\n                            <div id=\"repeate\" *ngFor=\"let p of posts\" style=\"padding:5px;\">\n                                <div style=\"border:2px solid black; margin-bottom:10px; width:500px;\">\n                                    <h3 style=\"font-weight:bold;text-transform: uppercase;\">\n                                        <a>\n                                            {{p.Title}}\n                                        </a>\n                                    </h3>\n                                    <p>Posted by <span style=\"font-weight:bold\"> \"{{p.username}}\" </span> in <span style=\"font-weight:bold;\"> {{p.Categoryname}} </span> on <span style=\"font-weight:bold\"> {{ p.createdOn| date:'longDate'}}</span> </p>\n                                    <p>{{p.partialcontent}}...</p>\n                                </div>\n                            </div>\n                        </div>\n                    </div>"
     }),
     __metadata("design:paramtypes", [service_1.Service, router_1.ActivatedRoute])

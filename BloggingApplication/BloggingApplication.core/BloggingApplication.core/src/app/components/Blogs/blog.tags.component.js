@@ -27,8 +27,8 @@ var BlogTagComponent = (function () {
 }());
 BlogTagComponent = __decorate([
     core_1.Component({
-        selector: 'display-tags',
-        template: "<div *ngIf='tags && tags.length==0' class=\"alert alert-info\" role=\"alert\">No record found!</div>\n                    <div *ngIf='tags && tags.length'>\n                        <div *ngFor=\"let t of tags\">\n                            <ul>\n                                <li><a href=\"/Home/Blog/Tag/{{t.Name}}/{{t.Id}}\">{{t.Name}}</a></li>\n                            </ul>\n                        </div>\n                    </div>\n"
+        selector: '',
+        template: "<div *ngIf='tags && tags.length==0' class=\"alert alert-info\" role=\"alert\">No record found!</div>\n                    <div *ngIf='tags && tags.length'>\n                        <div *ngFor=\"let t of tags\">\n                            <ul>\n                                <li><a [routerLink]=\"['/Home/Blog/Tag/',t.Name ,t.Id]\">{{t.Name}}</a></li>\n                            </ul>\n                        </div>\n                    </div>\n"
     }),
     __metadata("design:paramtypes", [service_1.Service])
 ], BlogTagComponent);

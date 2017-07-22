@@ -60,7 +60,7 @@ namespace BloggingApplication.core.WebApiControllers
             {
                 throw;
             }
-            return ToJson(post);
+            return ToJson(id);
         }
 
         // POST: api/Posts

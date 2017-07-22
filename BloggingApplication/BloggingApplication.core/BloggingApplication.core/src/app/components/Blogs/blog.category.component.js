@@ -27,8 +27,8 @@ var BlogCategoryComponent = (function () {
 }());
 BlogCategoryComponent = __decorate([
     core_1.Component({
-        selector: 'display-category',
-        template: "<div *ngIf='categories && categories.length == 0' class=\"alert alert-info\" role=\"alert\">No record found!</div>\n                <div *ngIf='categories && categories.length'>\n                    <div *ngFor=\"let c of categories\">\n                        <ul>\n                            <li><a [routerLink]=\"['/Home/Blog/Category/', c.Id]\">{{c.Name }}</a></li>\n                        </ul>\n                    </div>\n                </div>"
+        selector: '',
+        template: "<div *ngIf='categories && categories.length == 0' class=\"alert alert-info\" role=\"alert\">No record found!</div>\n                <div *ngIf='categories && categories.length'>\n                    <div *ngFor=\"let c of categories\">\n                        <ul>\n                            <li><a [routerLink]=\"['/Home/Blog/Category/',c.Name ,c.Id]\">{{c.Name }}</a></li>\n                        </ul>\n                    </div>\n                </div>"
     }),
     __metadata("design:paramtypes", [service_1.Service])
 ], BlogCategoryComponent);

@@ -59,7 +59,9 @@
     "@types/node": "^6.0.46",
     "@types/jasmine": "2.5.36",
     "ng2-bs3-modal": "0.10.4",
-    "angular-2-multiple-selection": "*"
+    "angular-2-multiple-selection": "*",
+    "ng2-pagination": "2.0.2",
+    "ngx-pagination": "3.0.1"
   },
   "repository": {}
 }

@@ -1,27 +1,64 @@
-﻿
-<div id="main">
+﻿<div id="main">
 
     <div id="blog" class="" style="float:left;margin-top:45px;text-align: justify;text-justify: inter-word;">
-        <display-blog>
+        <div id="blogpagination">
+            <div *ngIf='posts && posts.length==0' class="alert alert-info" role="alert">No Blogs Are available found!</div>
+            
+            <div *ngIf='posts && posts.length'>
+                <div id="repeate" *ngFor="let p of posts:| paginate: { itemsPerPage: 5, currentPage: p }" style="padding:5px;">
+                    <div style="border:2px solid black; margin-bottom:10px; width:500px;">
+                        
+                        <h3 style="font-weight:bold;text-transform: uppercase;">
+                            <a>
+                                {{p.Title}}
+                            </a>
+                        </h3>
+                        
+                        <p>
+                            Posted by <span style="font-weight:bold">
+                                "{{p.username}}"
+                            </span> in <span style="font-weight:bold;">
+                                {{p.Categoryname}}
+                            </span> on <span style="font-weight:bold">
+                                {{p.createdOn| date:'longDate'}}
+                            </span>
+                        </p>
+                        
+                        <p>{{p.partialcontent}}...</p>
+                    </div>
+                </div>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
 
-        </display-blog>
-        <!--<display-blog-by-Category>
-
-        </display-blog-by-Category>-->
+        </div>
     </div>
 
+
     <div id="sidebar" style="float:right;text-align: justify; margin-top:78px ; text-justify: inter-word;">
+        
         <div id="Category" style="height:300px;width:400px; margin:10px; border:2px solid black; overflow:auto">
             <h3 style="text-align:center">Categories</h3>
-            <display-category>
-            
-            </display-category>
+            <div *ngIf='categories && categories.length == 0' class="alert alert-info" role="alert">No record found!</div>
+            <div *ngIf='categories && categories.length'>
+                <div *ngFor="let c of categories">
+                    <ul>
+                        <li><a href="/Home/Blog/Category/{{c.Name }}/{{c.Id}}">{{c.Name }}</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        
         <div id="tags" style="height:300px;width:400px; margin:10px; border:2px solid black;overflow:auto;">
             <h3 style="text-align:center">Tags</h3>
-            <display-tags>
-
-            </display-tags>
+            <div *ngIf='tags && tags.length==0' class="alert alert-info" role="alert">No record found!</div>
+            <div *ngIf='tags && tags.length'>
+                <div *ngFor="let t of tags">
+                    <ul>
+                        <li><a href="/Home/Blog/Tag/{{t.Name}}/{{t.Id}}">{{t.Name}}</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>

@@ -4,12 +4,12 @@ import { ICategory } from '../../Models/category';
 import { Global } from '../../Shared/global';
 
 @Component({
-    selector:'display-category',
+    selector:'',
     template: `<div *ngIf='categories && categories.length == 0' class="alert alert-info" role="alert">No record found!</div>
                 <div *ngIf='categories && categories.length'>
                     <div *ngFor="let c of categories">
                         <ul>
-                            <li><a [routerLink]="['/Home/Blog/Category/', c.Id]">{{c.Name }}</a></li>
+                            <li><a [routerLink]="['/Home/Blog/Category/',c.Name ,c.Id]">{{c.Name }}</a></li>
                         </ul>
                     </div>
                 </div>`

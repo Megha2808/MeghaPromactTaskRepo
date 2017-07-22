@@ -11,17 +11,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var service_1 = require("../../Service/service");
 var global_1 = require("../../Shared/global");
+var router_1 = require("@angular/router");
 var IndexBlogComponent = (function () {
-    function IndexBlogComponent(_tagService) {
-        this._tagService = _tagService;
+    function IndexBlogComponent(_Service, route) {
+        this._Service = _Service;
+        this.route = route;
     }
     IndexBlogComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.LoadTags();
+        this.LoadCategories();
+        this.route.params.subscribe(function (params) {
+            if (params.id) {
+                //alert("has id");
+                if (params.categoryName) {
+                    //alert("has categoryname");
+                    _this.categoryid = +params["id"];
+                    //alert(this.categoryid);
+                    _this.LoadpostByCategory();
+                }
+                else if (params.tagName) {
+                    _this.tagid = +params["id"];
+                    //alert("has tagname");
+                    //alert(this.tagid);
+                    _this.LoadpostByTags();
+                }
+            }
+            else {
+                //alert("noo id");
+                _this.Loadposts();
+            }
+        });
     };
     IndexBlogComponent.prototype.LoadTags = function () {
         var _this = this;
-        this._tagService.get(global_1.Global.BASE_API_ENDPOINT + 'Tags/')
+        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Tags/')
             .subscribe(function (tags) { _this.tags = tags; }, function (error) { return _this.msg = error; });
+    };
+    IndexBlogComponent.prototype.Loadposts = function () {
+        var _this = this;
+        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Posts/')
+            .subscribe(function (posts) { _this.posts = posts; }, function (error) { return _this.msg = error; });
+    };
+    IndexBlogComponent.prototype.LoadCategories = function () {
+        var _this = this;
+        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Categories/')
+            .subscribe(function (categories) { _this.categories = categories; }, function (error) { return _this.msg = error; });
+    };
+    IndexBlogComponent.prototype.LoadpostByCategory = function () {
+        var _this = this;
+        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Posts/categoryId/' + this.categoryid)
+            .subscribe(function (posts) { _this.posts = posts; }, function (error) { return _this.msg = error; });
+    };
+    IndexBlogComponent.prototype.LoadpostByTags = function () {
+        var _this = this;
+        this._Service.get(global_1.Global.BASE_API_ENDPOINT + 'Posts/tagId/' + this.tagid)
+            .subscribe(function (posts) { _this.posts = posts; }, function (error) { return _this.msg = error; });
     };
     return IndexBlogComponent;
 }());
@@ -29,7 +74,7 @@ IndexBlogComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/components/Blogs/Index.component.html',
     }),
-    __metadata("design:paramtypes", [service_1.Service])
+    __metadata("design:paramtypes", [service_1.Service, router_1.ActivatedRoute])
 ], IndexBlogComponent);
 exports.IndexBlogComponent = IndexBlogComponent;
 //# sourceMappingURL=Index.Component.js.map

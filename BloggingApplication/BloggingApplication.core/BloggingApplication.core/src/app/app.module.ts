@@ -27,13 +27,14 @@ import { IndexBlogComponent } from './components/Blogs/Index.Component';
 import { BlogComponent } from './components/Blogs/blog.component';
 import { BlogByCategoryComponent } from './components/Blogs/BlogByCategory.component';
 import { Service } from './Service/service';
-
+import { PaginatePipe, PaginationControlsComponent, PaginationService } from 'ng2-pagination';
 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, Ng2Bs3ModalModule ],
-    declarations: [AppComponent, TagComponent, CategoryComponent, PostComponent, BlogCategoryComponent, BlogTagComponent, IndexBlogComponent, BlogComponent, BlogByCategoryComponent],
-    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, Service],
-    bootstrap: [AppComponent]
+    declarations: [AppComponent, TagComponent, CategoryComponent, PostComponent, BlogCategoryComponent, BlogTagComponent, IndexBlogComponent, BlogComponent, BlogByCategoryComponent, PaginationControlsComponent],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, Service, PaginationService],
+    bootstrap: [AppComponent],
+   
 })
 
 export class AppModule {

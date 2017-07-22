@@ -31,6 +31,7 @@ var Index_Component_1 = require("./components/Blogs/Index.Component");
 var blog_component_1 = require("./components/Blogs/blog.component");
 var BlogByCategory_component_1 = require("./components/Blogs/BlogByCategory.component");
 var service_1 = require("./Service/service");
+var ng2_pagination_1 = require("ng2-pagination");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,9 +40,9 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
-        declarations: [app_component_1.AppComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent, blog_category_component_1.BlogCategoryComponent, blog_tags_component_1.BlogTagComponent, Index_Component_1.IndexBlogComponent, blog_component_1.BlogComponent, BlogByCategory_component_1.BlogByCategoryComponent],
-        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, service_1.Service],
-        bootstrap: [app_component_1.AppComponent]
+        declarations: [app_component_1.AppComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent, blog_category_component_1.BlogCategoryComponent, blog_tags_component_1.BlogTagComponent, Index_Component_1.IndexBlogComponent, blog_component_1.BlogComponent, BlogByCategory_component_1.BlogByCategoryComponent, ng2_pagination_1.PaginationControlsComponent],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, service_1.Service, ng2_pagination_1.PaginationService],
+        bootstrap: [app_component_1.AppComponent],
     })
 ], AppModule);
 exports.AppModule = AppModule;
