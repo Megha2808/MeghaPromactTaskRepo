@@ -61,7 +61,8 @@
     "ng2-bs3-modal": "0.10.4",
     "angular-2-multiple-selection": "*",
     "ng2-pagination": "2.0.2",
-    "ngx-pagination": "3.0.1"
+    "ngx-pagination": "*",
+    "ng2-filter-pipe": "*"
   },
   "repository": {}
 }

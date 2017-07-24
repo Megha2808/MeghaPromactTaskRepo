@@ -1,41 +1,68 @@
 ﻿<div id="main">
-
     <div id="blog" class="" style="float:left;margin-top:45px;text-align: justify;text-justify: inter-word;">
         <div id="blogpagination">
-            <div *ngIf='posts && posts.length==0' class="alert alert-info" role="alert">No Blogs Are available found!</div>
-            
+
+
+            <div *ngIf='posts && posts.length==0' class="alert alert-info" style="margin-top:50px" role="alert"><h3>No Blogs Are available!</h3></div>
             <div *ngIf='posts && posts.length'>
-                <div id="repeate" *ngFor="let p of posts:| paginate: { itemsPerPage: 5, currentPage: p }" style="padding:5px;">
-                    <div style="border:2px solid black; margin-bottom:10px; width:500px;">
-                        
-                        <h3 style="font-weight:bold;text-transform: uppercase;">
-                            <a>
-                                {{p.Title}}
-                            </a>
-                        </h3>
-                        
-                        <p>
-                            Posted by <span style="font-weight:bold">
-                                "{{p.username}}"
-                            </span> in <span style="font-weight:bold;">
-                                {{p.Categoryname}}
-                            </span> on <span style="font-weight:bold">
-                                {{p.createdOn| date:'longDate'}}
-                            </span>
-                        </p>
-                        
-                        <p>{{p.partialcontent}}...</p>
-                    </div>
+                <div>
+                    <form>
+                        <input [(ngModel)]="term" placeholder="Search By Title" [ngModelOptions]="{standalone: true}" />
+                    </form>
                 </div>
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <div *ngIf='!post && (posts | filter: term).length'>
+                    <div id="repeate" *ngFor="let p of posts|filter:term |paginate: { itemsPerPage: 5, currentPage: p } " style="padding:5px;">
+                        <div style="border:2px solid black; margin-bottom:10px; width:500px;">
+                            <h3>
+                                <a (click)="postdetail(p.Id)">
+                                    {{p.Title}}
+                                </a>
+                            </h3>
+                            <p>
+                                Posted by <span style="font-weight:bold">
+                                    "{{p.username}}"
+                                </span> in <span style="font-weight:bold;">
+                                    {{p.Categoryname}}
+                                </span> on <span style="font-weight:bold">
+                                    {{p.createdOn| date:'longDate'}}
+                                </span>
+                            </p>
+                            <p>{{p.partialcontent}}...</p>
+                        </div>
+
+                    </div>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                </div>
+                <div *ngIf="(posts | filter: term).length  === 0">
+                    <h3>No Blogs Are available of this search keywords</h3>
+                </div>
+            </div>
+            <div *ngIf='post'>
+
+                <div style="border:2px solid black; margin-bottom:10px; width:500px;">
+                    <h3>
+                        {{post.Title}}
+                    </h3>
+                    <p>
+                        Posted by <span style="font-weight:bold">
+                            "{{post.username}}"
+                        </span> in <span style="font-weight:bold;">
+                            {{post.Categoryname}}
+                        </span> on <span style="font-weight:bold">
+                            {{post.createdOn| date:'longDate'}}
+                        </span>
+                    </p>
+                    <p>{{post.Content}}...</p>
+                </div>
             </div>
 
         </div>
     </div>
 
 
-    <div id="sidebar" style="float:right;text-align: justify; margin-top:78px ; text-justify: inter-word;">
-        
+    <div id="sidebar" style="float:right;text-align: justify; margin-top:62px ; text-justify: inter-word;">
+
         <div id="Category" style="height:300px;width:400px; margin:10px; border:2px solid black; overflow:auto">
             <h3 style="text-align:center">Categories</h3>
             <div *ngIf='categories && categories.length == 0' class="alert alert-info" role="alert">No record found!</div>
@@ -47,7 +74,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="tags" style="height:300px;width:400px; margin:10px; border:2px solid black;overflow:auto;">
             <h3 style="text-align:center">Tags</h3>
             <div *ngIf='tags && tags.length==0' class="alert alert-info" role="alert">No record found!</div>

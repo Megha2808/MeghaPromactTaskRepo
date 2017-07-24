@@ -9,7 +9,7 @@ var appRoutes = [
     { path: 'Home/Admin/tag', component: tag_component_1.TagComponent },
     { path: 'Home/Admin/category', component: category_component_1.CategoryComponent },
     { path: 'Home/Admin/post', component: post_component_1.PostComponent },
-    { path: 'Home/Blog', component: Index_Component_1.IndexBlogComponent },
+    { path: '', component: Index_Component_1.IndexBlogComponent },
     { path: 'Home/Blog/Category/:categoryName/:id', component: Index_Component_1.IndexBlogComponent },
     { path: 'Home/Blog/Tag/:tagName/:id', component: Index_Component_1.IndexBlogComponent }
 ];

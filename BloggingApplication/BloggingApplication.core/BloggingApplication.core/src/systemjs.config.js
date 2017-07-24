@@ -29,7 +29,8 @@
       'ng2-bs3-modal': 'npm:/ng2-bs3-modal',
       'angular-2-multiple-selection': 'npm:angular-2-multiple-selection',
       'ng2-pagination': 'npm:ng2-pagination',
-        'ngx-pagination': 'npm:ngx-pagination'
+      'ngx-pagination': 'https://npmcdn.com/ngx-pagination',
+      'ng2-filter-pipe': 'npm:ng2-filter-pipe'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -49,14 +50,9 @@
       'angular-2-multiple-selection': {
           defaultExtension: 'ts'
       },
-      'ng2-pagination': { //add configuration to load
-         
-          defaultExtension: 'js'
-      },
-      'ngx-pagination': { //add configuration to load
-         
-          defaultExtension: 'js'
-      }
+      'ng2-pagination': { defaultExtension: 'js' },
+      'ngx-pagination': { defaultExtension: 'js' },
+      'ng2-filter-pipe': { defaultExtension: 'js' }
     }
   });
 })(this);

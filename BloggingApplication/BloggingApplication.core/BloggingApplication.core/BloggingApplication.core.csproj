@@ -1140,6 +1140,7 @@
     <TypeScriptCompile Include="src\app\Models\category.ts" />
     <TypeScriptCompile Include="src\app\Models\post.ts" />
     <TypeScriptCompile Include="src\app\Models\tag.ts" />
+    <TypeScriptCompile Include="src\app\Service\FilterService.ts" />
     <TypeScriptCompile Include="src\app\Service\service.ts" />
     <TypeScriptCompile Include="src\app\Shared\enum.ts" />
     <TypeScriptCompile Include="src\app\Shared\global.ts" />

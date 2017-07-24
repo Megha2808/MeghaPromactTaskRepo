@@ -16,6 +16,8 @@ var IndexBlogComponent = (function () {
     function IndexBlogComponent(_Service, route) {
         this._Service = _Service;
         this.route = route;
+        this.p = 1;
+        this.term = '';
     }
     IndexBlogComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -42,6 +44,11 @@ var IndexBlogComponent = (function () {
                 _this.Loadposts();
             }
         });
+    };
+    IndexBlogComponent.prototype.postdetail = function (id) {
+        //alert("heloo");
+        //alert(id);
+        this.post = this.posts.filter(function (x) { return x.Id === id; })[0];
     };
     IndexBlogComponent.prototype.LoadTags = function () {
         var _this = this;

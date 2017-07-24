@@ -1,5 +1,3 @@
-// import { NgModule }      from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,13 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// import { AppComponent }  from './app.component';
-// @NgModule({
-//  imports:      [ BrowserModule ],
-//  declarations: [ AppComponent ],
-//  bootstrap:    [ AppComponent ]
-// })
-// export class AppModule { }
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var platform_browser_1 = require("@angular/platform-browser");
@@ -31,7 +22,10 @@ var Index_Component_1 = require("./components/Blogs/Index.Component");
 var blog_component_1 = require("./components/Blogs/blog.component");
 var BlogByCategory_component_1 = require("./components/Blogs/BlogByCategory.component");
 var service_1 = require("./Service/service");
-var ng2_pagination_1 = require("ng2-pagination");
+//import { PaginatePipe, PaginationControlsComponent, PaginationService } from 'ng2-pagination';
+var ngx_pagination_1 = require("ngx-pagination");
+var FilterService_1 = require("./Service/FilterService");
+//import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,9 +33,9 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
-        declarations: [app_component_1.AppComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent, blog_category_component_1.BlogCategoryComponent, blog_tags_component_1.BlogTagComponent, Index_Component_1.IndexBlogComponent, blog_component_1.BlogComponent, BlogByCategory_component_1.BlogByCategoryComponent, ng2_pagination_1.PaginationControlsComponent],
-        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, service_1.Service, ng2_pagination_1.PaginationService],
+        imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule, ngx_pagination_1.NgxPaginationModule, forms_1.FormsModule],
+        declarations: [app_component_1.AppComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent, blog_category_component_1.BlogCategoryComponent, blog_tags_component_1.BlogTagComponent, Index_Component_1.IndexBlogComponent, blog_component_1.BlogComponent, BlogByCategory_component_1.BlogByCategoryComponent, FilterService_1.SearchFilterPipe],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, service_1.Service],
         bootstrap: [app_component_1.AppComponent],
     })
 ], AppModule);

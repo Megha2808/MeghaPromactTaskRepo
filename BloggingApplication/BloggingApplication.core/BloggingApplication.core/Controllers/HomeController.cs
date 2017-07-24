@@ -17,10 +17,18 @@ namespace BloggingApplication.core.Controllers
             TempData.Keep("UserId");
             return View();
         }
+
+        [Route("Home/Blog")]
         public ActionResult Blog()
         {
+            var rolename = TempData["roleName"];
+            var userid = TempData["UserId"];
+            TempData.Keep("roleName");
+            TempData.Keep("UserId");
             return View();
         }
+
+        [Authorize(Roles ="Admin")]
         public ActionResult Admin()
         {
             var rolename = TempData["roleName"];

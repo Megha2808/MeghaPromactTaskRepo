@@ -97,8 +97,8 @@ namespace BloggingApplication.core.Controllers
                     TempData["UserId"] = user.Id;
                     TempData.Keep("roleName");                    
                     TempData.Keep("UserId");
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
+                        return RedirectToAction("Blog", "Home");
+                    case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
@@ -427,7 +427,7 @@ namespace BloggingApplication.core.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Blog", "Home");
         }
 
         //
