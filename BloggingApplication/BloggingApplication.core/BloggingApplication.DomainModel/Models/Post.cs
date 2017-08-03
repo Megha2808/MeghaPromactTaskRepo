@@ -28,6 +28,7 @@ namespace BloggingApplication.DomainModel.Models
         public virtual string Users_Id { get; set; }
 
         public virtual int Category_Id { get; set; }
+
         public bool? Isdelete { get; set; }
 
         [ForeignKey("Users_Id")]

@@ -39,6 +39,13 @@ export class TagComponent implements OnInit {
             error => this.msg = <any>error);
     }
 
+    //LoadTags(): void {
+    //    this.indLoading = true;
+    //    this._tagService.get('http://localhost:3000/api/users')
+    //        .subscribe(tags => { this.tags = tags; this.indLoading = false; },
+    //        error => this.msg = <any>error);
+    //}
+
     addTag() {
         this.dbops = DBOperation.create;
         this.SetControlsState(true);

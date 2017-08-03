@@ -17,7 +17,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let tag of tags">
-                        <td>{{tag.Name}}</td>                        
+                        <td>{{tag.Name}}</td>  
+                        <!--<td>{{tag.username}}</td>-->                           
                         <td>
                             <button title="Edit" class="btn btn-primary" (click)="editTag(tag.Id)">Edit</button>
                             <button title="Delete" class="btn btn-danger" (click)="deleteTag(tag.Id)">Delete</button>

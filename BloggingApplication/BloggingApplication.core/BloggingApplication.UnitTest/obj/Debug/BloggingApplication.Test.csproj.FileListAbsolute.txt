@@ -68,3 +68,6 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.Integration.Mvc.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\Autofac.Integration.Mvc.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Web.Http.Cors.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Web.Cors.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.UnitTest\bin\Debug\System.Web.Http.Cors.xml

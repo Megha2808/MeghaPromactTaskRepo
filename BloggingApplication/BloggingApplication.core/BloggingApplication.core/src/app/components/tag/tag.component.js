@@ -33,6 +33,12 @@ var TagComponent = (function () {
         this._tagService.get(global_1.Global.BASE_API_ENDPOINT + 'Tags/')
             .subscribe(function (tags) { _this.tags = tags; _this.indLoading = false; }, function (error) { return _this.msg = error; });
     };
+    //LoadTags(): void {
+    //    this.indLoading = true;
+    //    this._tagService.get('http://localhost:3000/api/users')
+    //        .subscribe(tags => { this.tags = tags; this.indLoading = false; },
+    //        error => this.msg = <any>error);
+    //}
     TagComponent.prototype.addTag = function () {
         this.dbops = enum_1.DBOperation.create;
         this.SetControlsState(true);

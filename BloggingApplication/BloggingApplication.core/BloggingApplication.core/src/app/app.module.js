@@ -16,16 +16,10 @@ var app_routing_1 = require("./app.routing");
 var tag_component_1 = require("./components/tag/tag.component");
 var category_component_1 = require("./components/category/category.component");
 var post_component_1 = require("./components/post/post.component");
-var blog_category_component_1 = require("./components/Blogs/blog.category.component");
-var blog_tags_component_1 = require("./components/Blogs/blog.tags.component");
 var Index_Component_1 = require("./components/Blogs/Index.Component");
-var blog_component_1 = require("./components/Blogs/blog.component");
-var BlogByCategory_component_1 = require("./components/Blogs/BlogByCategory.component");
 var service_1 = require("./Service/service");
-//import { PaginatePipe, PaginationControlsComponent, PaginationService } from 'ng2-pagination';
 var ngx_pagination_1 = require("ngx-pagination");
 var FilterService_1 = require("./Service/FilterService");
-//import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +28,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule, ngx_pagination_1.NgxPaginationModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent, blog_category_component_1.BlogCategoryComponent, blog_tags_component_1.BlogTagComponent, Index_Component_1.IndexBlogComponent, blog_component_1.BlogComponent, BlogByCategory_component_1.BlogByCategoryComponent, FilterService_1.SearchFilterPipe],
+        declarations: [app_component_1.AppComponent, tag_component_1.TagComponent, category_component_1.CategoryComponent, post_component_1.PostComponent, Index_Component_1.IndexBlogComponent, FilterService_1.SearchFilterPipe],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, service_1.Service],
         bootstrap: [app_component_1.AppComponent],
     })

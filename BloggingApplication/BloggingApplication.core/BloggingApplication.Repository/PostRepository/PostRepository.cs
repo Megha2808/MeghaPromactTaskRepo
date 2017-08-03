@@ -55,12 +55,12 @@ namespace BloggingApplication.Repository.PostRepository
             //To avoid adding New tags in database...
             foreach (var assignedtag in p.Tags)
             {
-              var tagstoadd = db.Tags.Where(x=>x.Id==assignedtag.Id).FirstOrDefault();
-                post.Tags.Add(tagstoadd);
-                //db.Entry(assignedtag).State = EntityState.Unchanged;
+              //var tagstoadd = db.Tags.Where(x=>x.Id==assignedtag.Id).FirstOrDefault();
+              //  post.Tags.Add(tagstoadd);
+              db.Entry(assignedtag).State = EntityState.Unchanged;
             }
 
-            //post.Tags = p.Tags;
+            post.Tags = p.Tags;
             db.Posts.Add(post);
             db.SaveChanges();
         }
@@ -75,21 +75,38 @@ namespace BloggingApplication.Repository.PostRepository
             p.Modified = DateTime.Now.Date;
             p.Title = model.Title;
             p.Content = model.Content;
-
-            var count = p.Tags.Count;
-            for (var i = 0; i <count; i++)
-            {                              
-                p.Tags.Remove(p.Tags.ElementAt(0));               
-            }
-
+         
             foreach (var assignedtag in model.Tags)
             {
-
-                db.Entry(assignedtag).State = EntityState.Modified;
-            }
-
-
-            p.Tags = model.Tags;
+                var c = 0;
+               
+                foreach (var j in p.Tags.ToList())
+                {
+                    //var removetags = 0;
+                    //foreach (var assignedtags in model.Tags)
+                    //{
+                        
+                    //    if (j.Id== assignedtags.Id)
+                    //    {
+                    //        removetags = 1;
+                    //    }
+                    //}
+                    //if(removetags==0)
+                    //{
+                    //    p.Tags.Remove(j);                       
+                    //}
+                    if (j.Id == assignedtag.Id)
+                    {                       
+                        c = 1;
+                    }
+                }
+                if(c==0)
+                {                   
+                    p.Tags.Add(assignedtag);
+                    db.Entry(assignedtag).State = EntityState.Modified;
+                }               
+            }   
+                     
             db.Entry(p).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }

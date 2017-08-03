@@ -17,20 +17,7 @@ namespace BloggingApplication.core.WebApiControllers
     {
 
          ITagRepository _tagRepository = new TagRepository();
-
-        //public TagsController(ITagRepository repository)
-        //{
-        //    _tagRepository = repository;
-        //}
-
-        //// GET: api/Tags
-        //[Route("api/Tags")]
-        //public IHttpActionResult GetTags()
-        //{
-        //    var data = _tagRepository.GetAllTags();
-        //    return Ok(data);
-        //}
-
+       
         // GET: api/Tags
         [Route("api/Tags")]
         public HttpResponseMessage GetTags()
@@ -51,59 +38,14 @@ namespace BloggingApplication.core.WebApiControllers
             }
             return Ok(tag);
         }
-
-        //// PUT: api/Tags/5
-        //[ResponseType(typeof(void))]
-        //[Route("api/PutTag")]
-        //public IHttpActionResult PutTag( Tag tag)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //   // db.Entry(tag).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        _tagRepository.EditTag(tag);               
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        throw;
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
+       
         [Route("api/PutTag/{id}")]
         public HttpResponseMessage Put(int id, [FromBody]Tag tag)
         {
             _tagRepository.EditTag(tag);
             return ToJson(tag);
         }
-
-        //// POST: api/Tags
-        //[ResponseType(typeof(Tag))]
-        //[Route("api/AddTags")]
-        //public IHttpActionResult PostTag(Tag tag)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    else
-        //    {
-        //        _tagRepository.AddTag(tag);
-        //        return Ok();
-        //    }
-        //    //db.Tags.Add(tag);
-        //    //db.SaveChanges();
-
-        //    //return CreatedAtRoute("DefaultApi", new { id = tag.Id }, tag);
-        //}
-
-        //[ResponseType(typeof(Tag))]
+        
         [Route("api/AddTags")]
         public HttpResponseMessage Post([FromBody]Tag tag)
         {
@@ -123,19 +65,9 @@ namespace BloggingApplication.core.WebApiControllers
             }
 
             _tagRepository.DeleteTag(id);
-            //db.Tags.Remove(tag);
-            //db.SaveChanges();
+            
             return ToJson(id);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-               // db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        }        
         
     }
 }

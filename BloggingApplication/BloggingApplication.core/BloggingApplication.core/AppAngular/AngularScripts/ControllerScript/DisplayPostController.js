@@ -14,7 +14,6 @@
     /****************************************************
                      Edit  Post
     ****************************************************/
-
     GetCategories();
     function GetCategories() {
         //alert("In get cat ");
@@ -39,7 +38,7 @@
        });
     }
 
-    $scope.PostDetail = {
+    $scope.PostDetail ={
         Id: '',
         Title: '',
         Content: '',
@@ -48,7 +47,6 @@
     };
 
     $scope.GetPostById = function (data) {
-
         $scope.PostDetail =
             {
                 Id: data.Id,
@@ -86,9 +84,9 @@
             );
     };
 
-    /******************************************
+/******************************************
            Post to delete
-    ***********************************************/
+***********************************************/
     $scope.DeletePost = function (Id) {
         Api.DeletePost(Id).
             then(function () {

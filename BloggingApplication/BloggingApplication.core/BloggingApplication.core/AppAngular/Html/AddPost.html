@@ -29,7 +29,8 @@
                 <div class="col-xs-10">
                     <label for="inputname">Tags</label>
                     <select multiple ng-model="SelectedTag" class="form-control" style="height:200px;"
-                            ng-options="item.Name for item in TagList" required></select>
+                            ng-options="item.Name for item in TagList" required>
+                    </select>
                 </div>
                 <div class="col-xs-10">  
                     <div style="float:left"> <button ng-click="AddNewPost()" class="btn">Save</button></div>

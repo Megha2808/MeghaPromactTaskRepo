@@ -27,7 +27,6 @@ namespace BloggingApplication.DomainModel.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Post>()
                         .HasMany(s => s.Tags)
                         .WithMany(c => c.Posts)
