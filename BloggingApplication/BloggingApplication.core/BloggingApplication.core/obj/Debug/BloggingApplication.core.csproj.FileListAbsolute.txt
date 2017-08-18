@@ -99,6 +99,8 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\BloggingApplication.core.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\BloggingApplication.core.pdb
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Antlr3.Runtime.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.Integration.Mvc.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\BloggingApplication.DomainModel.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\BloggingApplication.Repository.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\EntityFramework.dll
@@ -127,7 +129,9 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Newtonsoft.Json.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Owin.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Net.Http.Formatting.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Cors.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Helpers.dll
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.Cors.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.WebHost.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Mvc.dll
@@ -139,6 +143,8 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\WebGrease.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\BloggingApplication.DomainModel.pdb
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\BloggingApplication.Repository.pdb
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.Integration.Mvc.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Microsoft.AI.DependencyCollector.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Microsoft.AI.Web.xml
@@ -147,6 +153,7 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Net.Http.Formatting.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.Cors.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.WebHost.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Helpers.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Mvc.xml
@@ -174,10 +181,3 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\obj\Debug\BloggingApplication.core.csprojResolveAssemblyReference.cache
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\obj\Debug\BloggingApplication.core.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\obj\Debug\BloggingApplication.core.pdb
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.dll
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.Integration.Mvc.dll
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.xml
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\Autofac.Integration.Mvc.xml
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Cors.dll
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.Cors.dll
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.core\bin\System.Web.Http.Cors.xml

@@ -145,5 +145,4 @@ export class TagComponent implements OnInit {
                 break;
         }
     }
-
 }

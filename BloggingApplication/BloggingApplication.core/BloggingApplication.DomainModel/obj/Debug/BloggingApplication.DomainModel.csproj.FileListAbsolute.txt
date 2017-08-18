@@ -92,6 +92,7 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\bin\Debug\System.Web.WebPages.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\bin\Debug\System.Web.WebPages.Razor.xml
+D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.csprojResolveAssemblyReference.cache
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.Migrations.InitialCreate.resources
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.Migrations.name.resources
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.Migrations.listofpostsadded.resources
@@ -103,4 +104,3 @@ D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\Blo
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.csproj.GenerateResource.Cache
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.dll
 D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.pdb
-D:\GITRepo\MeghaPromactTaskRepo\BloggingApplication\BloggingApplication.core\BloggingApplication.DomainModel\obj\Debug\BloggingApplication.DomainModel.csprojResolveAssemblyReference.cache
